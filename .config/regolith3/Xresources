@@ -1,0 +1,5 @@
+wm.bar.position: top
+wm.bar.font: BitstreamVeraSansMono Nerd Font 16 
+i3xrocks.value.font:	BitstreamVeraSansMono Nerd Font 16
+!regolith.look.path: /usr/share/regolith-look/nord
+regolith.look.path: /usr/share/regolith-look/nord
