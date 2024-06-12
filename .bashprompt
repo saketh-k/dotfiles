@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Define foreground colors as human-readable variables
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+BLUE='\033[0;34m'
+MAGENTA='\033[0;35m'
+CYAN='\033[0;36m'
+WHITE='\033[0;37m'
+RESET='\033[0m'  # No color / Reset
+
+# Define background colors as human-readable variables
+BG_RED='\033[41m'
+BG_GREEN='\033[42m'
+BG_YELLOW='\033[43m'
+BG_BLUE='\033[44m'
+BG_MAGENTA='\033[45m'
+BG_CYAN='\033[46m'
+BG_WHITE='\033[47m'
+
+#PS1 = 'Hello'
+#PS1+='\n${debian_chroot:+($debian_chroot)}'
+#PS1+='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$'
+#PS1+='\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$'
+#PS1+=':\[\033[01;34m\]\w\[\033[00m\]\$'
+#export PS1
