@@ -1,0 +1,2 @@
+Name@hostname Python venv/ Conda  line  Git status  Vim Mode?             Time
+L ~  <- colored based on error
