@@ -35,6 +35,7 @@ in {
 	  # TODO: Set to 3.5 again after scaling firefox more reasonably
 	  #       or create a scaling factor that scales ALL screens easily
 	  scale = "1.5";
+          background = "#018281 solid_color";
 	};
 	"Samsung Electric Company U32R59x HNMN703160" = {
 	  scale = "2.6";

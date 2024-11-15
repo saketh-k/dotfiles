@@ -4,27 +4,17 @@
   programs = {
     wofi = {
       enable = true;
-      settings = ''
-        color-window = #00000000
-        color-normal = #ffffffff
-        color-active = #ff555555
-        color-active2 = #ff555555
-        color-urgent = #ff555555
-        color-urgent2 = #ff555555
-        color-input = #ff555555
-        
+      settings = {
         # padding
-        padding = 5
+        padding = 5;
         
         # font
-        font = "JetBrains Mono Medium 10"
+        font = "JetBrains Mono Medium 10";
         
         # lines
-        lines = 10
-        
-        #
-        key_expand=Tabcolor-window = "#00000000"
-        '';
+        lines = 10;
+        key_expand="Tab";
+      };
       style = ''
         /* Wofi CSS with Windows 95-inspired theme */
         

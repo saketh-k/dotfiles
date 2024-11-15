@@ -34,93 +34,60 @@
     obsidian
     tmux
     playerctl
-    fira-code
-    fira-mono
-    dejavu_fonts
-    cascadia-code
     xorg.xmodmap
 
-    #vpn
     openvpn
     openconnect
     vpnc
-
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
+    kitty-themes
   ];
 
-  # Git configuraation
-  programs.git = {
-    enable = true;
-    userName = lib.mkDefault "Saketh Karumuri";
-    userEmail = lib.mkDefault "skarumuri1@gmail.com";
-  };
+  programs = {
 
-  # Alacrity configuration
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      selection.save_to_clipboard = true;
-      shell.program = "tmux";
-      #  font.bold = {
-      #    family = "FiraMono";
-      #  };
-      #  font.bold_italic = {
-      #    family = "FiraMono";
-      #  };
-      #  font.italic = {
-      #    family = "FiraMono";
-      #  };
-      font.size = 12;
-      import = [pkgs.alacritty-theme.tokyo_night];
-      font.normal = {
-        family = "Fira Code";
+    # Terminal tools
+    alacritty = {
+      enable = lib.mkDefault true;
+      settings = {
+        selection.save_to_clipboard = true;
+        shell.program = "tmux";
+        font.size = 12;
+        import = [pkgs.alacritty-theme.tokyo_night];
+        font.normal = {
+          family = "Fira Code";
+        };
       };
     };
-  };
 
-  programs.bash = {
-    enable = true;
-    enableCompletion = true;
-    shellAliases = {
-      wake_desk = "wol 18:C0:4D:88:D7:08";
+    kitty = {
+      enable = true;
+      theme = "IR Black";
+      shellIntegration.enableBashIntegration = true;
     };
-  };
-
-  programs = {
-    kitty.enable = true;
     fastfetch.enable = true;
+
+    bash = {
+      enable = true;
+      enableCompletion = true;
+      shellAliases = {
+        wake_desk = "wol 18:C0:4D:88:D7:08"; # Wake up my desktop
+      };
+    };
+
+    # Version Control tools
     gh.enable = true;
+    git = {
+      enable = true;
+      userName = lib.mkDefault "Saketh Karumuri";
+      userEmail = lib.mkDefault "skarumuri1@gmail.com";
+
+    };
   };
 
   nixpkgs.config.allowUnfree = true;
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
+    
   };
 
   # Home Manager can also manage your environment variables through
