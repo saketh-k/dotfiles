@@ -24,6 +24,8 @@ in {
     # Screenshot
     "Print" = "exec grim -g \"\$(slurp)\" - | wl-copy";
 
+    #Toggle laptop output
+    "XF86Display" = "output eDP-1 enable";
     # Sticky
     "${modifier}+Shift+S" = "sticky toggle";
     };

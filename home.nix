@@ -10,7 +10,6 @@
     ./fonts.nix
     ./extras.nix
     ./tmux
-    ./youtube.nix
     ./wofi
   ];
 
