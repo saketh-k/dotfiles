@@ -6,33 +6,38 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-24.05";
+      url = "github:nix-community/nixvim/nixos-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim-flake.url = "github:jordanisaacs/neovim-flake";
     zen-browser.url = "github:MarceColl/zen-browser-flake";
+    ghostty.url = "github:ghostty-org/ghostty";
   };
 
   # Define the outputs of the flake
   outputs = inputs @ {
     self,
     nixpkgs,
+    unstable,
     home-manager,
     neovim-flake,
     zen-browser,
     nixvim,
+    ghostty,
     alacritty-theme,
     ...
   }: let
     # Specify the system architecture (make sure this matches your platform)
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
-  in {
+    pkgs-unstable = unstable.legacyPackages.${system};
+  in 
     # Define Home Manager configurations
     homeConfigurations = {
       saketh = home-manager.lib.homeManagerConfiguration {

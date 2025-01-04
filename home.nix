@@ -4,13 +4,17 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     ./sway
     ./fonts.nix
     ./extras.nix
     ./tmux
     ./wofi
+    ./tofi
+    ./browsers
+    ./games
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -30,17 +34,17 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    obsidian
-    tmux
-    playerctl
-    xorg.xmodmap
+    pkgs.obsidian
+    pkgs.tmux
+    pkgs.playerctl
+    pkgs.xorg.xmodmap
 
-    openvpn
-    openconnect
-    vpnc
-    kitty-themes
+    pkgs.kitty-themes
+    inputs.ghostty.packages."x86_64-linux".default
   ];
 
+  xdg.configFile."wezterm/wezterm.lua".source = config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/wezterm.lua;
+  #TODO: Switch this to be a non-relative path
   programs = {
 
     # Terminal tools
@@ -50,16 +54,21 @@
         selection.save_to_clipboard = true;
         shell.program = "tmux";
         font.size = 12;
-        import = [pkgs.alacritty-theme.tokyo_night];
+        import = [ pkgs.alacritty-theme.tokyo_night ];
         font.normal = {
           family = "Fira Code";
         };
       };
     };
 
+    wezterm = {
+      enable = lib.mkDefault true;
+      enableBashIntegration = true;
+    };
+
     kitty = {
       enable = true;
-      theme = "IR Black";
+      # themeFile = ...; # "IR Black"
       shellIntegration.enableBashIntegration = true;
     };
     fastfetch.enable = true;
@@ -70,6 +79,7 @@
       shellAliases = {
         wake_desk = "wol 18:C0:4D:88:D7:08"; # Wake up my desktop
       };
+      # blesh.enable = true;
     };
 
     # Version Control tools
@@ -86,7 +96,7 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    
+
   };
 
   # Home Manager can also manage your environment variables through
