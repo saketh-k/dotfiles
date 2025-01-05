@@ -1,0 +1,35 @@
+
+font=JetBrains Mono Medium 10
+matching-algorithm = fuzzy
+
+# General settings
+font = "JetBrains Mono 12"          # Sleek, modern font
+prompt = ""
+anchor = "center"
+width = 600                         # Wider for a glassy pane look
+height = 300
+
+# Colors
+background-color = "rgba(0, 0, 0, 0.6)"   # Smoked glass effect with transparency
+foreground-color = "#ffffff"              # White text for visibility
+selection-color = "rgba(255, 255, 255, 0.2)"  # Soft, frosted selection highlight
+selection-foreground-color = "#ffffff"    # White text for selected items
+border-color = "rgba(255, 255, 255, 0.3)" # Subtle white border for glass edge
+
+# Borders
+border-width = 2
+border-radius = 10                        # Rounded corners for a modern look
+
+# Padding and spacing
+padding = 20                              # Spacing around content
+spacing = 10                              # Space between list items
+
+# Shadows
+shadow-offset-x = 5                       # Slight shadow for depth
+shadow-offset-y = 5
+shadow-radius = 20
+shadow-color = "rgba(0, 0, 0, 0.5)"       # Subtle black shadow for glass effect
+
+# List style
+list-spacing = 10                         # Spaced-out list items for clarity
+

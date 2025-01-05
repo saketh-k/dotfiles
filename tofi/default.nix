@@ -6,13 +6,10 @@
 }:
 # Tofi configuration
 {
+  xdg.configFile."tofi/config".source = config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/tofi/config;
   programs = {
     tofi = {
       enable = true;
-      settings = {
-        # font
-        font = "JetBrains Mono Medium 10";
-      };
     };
   };
 }

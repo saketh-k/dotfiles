@@ -10,7 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,7 +24,7 @@
   outputs = inputs @ {
     self,
     nixpkgs,
-    unstable,
+    nixos-unstable,
     home-manager,
     neovim-flake,
     zen-browser,
@@ -36,14 +36,14 @@
     # Specify the system architecture (make sure this matches your platform)
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
-    pkgs-unstable = unstable.legacyPackages.${system};
-  in 
+    pkgs-unstable = import nixos-unstable {inherit system; config.allowUnfree = true; };
+  in {
     # Define Home Manager configurations
     homeConfigurations = {
       saketh = home-manager.lib.homeManagerConfiguration {
         # Define the Home Manager environment
         pkgs = pkgs;
-	extraSpecialArgs = {inherit inputs; };
+	extraSpecialArgs = {inherit inputs pkgs-unstable; };
         # Home Manager modules
         modules = [
           {
