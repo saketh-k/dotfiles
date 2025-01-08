@@ -127,6 +127,8 @@
     desktopName = "Discord";
   })
     # pkgs-unstable.discord-canary
+    pkgs-unstable.ghostty
+    thunderbird
     bottom
     htop
     fastfetch

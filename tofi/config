@@ -2,34 +2,54 @@
 font=JetBrains Mono Medium 10
 matching-algorithm = fuzzy
 
-# General settings
-font = "JetBrains Mono 12"          # Sleek, modern font
-prompt = ""
-anchor = "center"
-width = 600                         # Wider for a glassy pane look
-height = 300
+# Basic configuration for Tofi
 
-# Colors
-background-color = "rgba(0, 0, 0, 0.6)"   # Smoked glass effect with transparency
-foreground-color = "#ffffff"              # White text for visibility
-selection-color = "rgba(255, 255, 255, 0.2)"  # Soft, frosted selection highlight
-selection-foreground-color = "#ffffff"    # White text for selected items
-border-color = "rgba(255, 255, 255, 0.3)" # Subtle white border for glass edge
+# General behavior
+text-cursor = false
+history = true
+matching-algorithm = fuzzy
 
-# Borders
+# Style settings (Windows 95 theme)
+font = "Fira Mono 12"
+font-size = 12
+background-color = #c0c0c0
+outline-width = 2
+outline-color = #000000
 border-width = 2
-border-radius = 10                        # Rounded corners for a modern look
+border-color = #ffffff
+text-color = #000000
 
-# Padding and spacing
-padding = 20                              # Spacing around content
-spacing = 10                              # Space between list items
+# Prompt
+prompt-text = "Run: "
+prompt-color = #000000
+prompt-background = #c0c0c0
+prompt-background-padding = 2
+prompt-background-corner-radius = 0
 
-# Shadows
-shadow-offset-x = 5                       # Slight shadow for depth
-shadow-offset-y = 5
-shadow-radius = 20
-shadow-color = "rgba(0, 0, 0, 0.5)"       # Subtle black shadow for glass effect
+# Input
+input-color = #000000
+input-background = #ffffff
+input-background-padding = 2
+input-background-corner-radius = 0
 
-# List style
-list-spacing = 10                         # Spaced-out list items for clarity
+# Results
+default-result-color = #000000
+default-result-background = #c0c0c0
+selection-color = #ffffff
+selection-background = #000080
+selection-background-padding = 2
+selection-background-corner-radius = 0
+result-spacing = 3
+
+# Window positioning and layout
+width = 40%
+height = 30%
+corner-radius = 0
+anchor = center
+margin-top = 5%
+exclusive-zone = 0
+
+# Output and scaling
+output = ""
+scale = true
 

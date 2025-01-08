@@ -70,8 +70,8 @@ in
           command = "waybar";
         }
       ];
-      window.border = 0;
-      floating.border = 0;
+      window.border = -1;
+      floating.border = -1;
       output = {
         DP-1 = {
           resolution = "3840x2160@30Hz";
@@ -216,6 +216,7 @@ in
             "rewrite": {
                 "(.*)YouTube(*.)": "$1  ",
                 "(.*)— Mozilla Firefox": "🌎 $1",
+                "(.*)— Zen Browser": "🌎 $1",
                 "(.*)Alacritty": " $1"
             }
         },

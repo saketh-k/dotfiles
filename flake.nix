@@ -6,7 +6,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-24.11";
+      url = "path:./vim/";
+      # url = "github:nix-community/nixvim/nixos-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
@@ -25,10 +26,10 @@
     self,
     nixpkgs,
     nixos-unstable,
+    nixvim,
     home-manager,
     neovim-flake,
     zen-browser,
-    nixvim,
     ghostty,
     alacritty-theme,
     ...
@@ -51,12 +52,13 @@
             nixpkgs.overlays = [ alacritty-theme.overlays.default ];
             home.packages = [
               zen-browser.packages.${system}.default
+	      nixvim.packages.${system}.default
 
               # neovim-flake.packages.${system}.maximal
             ];
           }
           ./home.nix # Path to your actual configuratin file
-          ./vim/default.nix
+          #nixvim.homeConfigurations.nixvim
         ];
       };
     };

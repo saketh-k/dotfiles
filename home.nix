@@ -40,7 +40,6 @@
     pkgs.xorg.xmodmap
 
     pkgs.kitty-themes
-    inputs.ghostty.packages."x86_64-linux".default
   ];
 
   xdg.configFile."wezterm/wezterm.lua".source = config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/wezterm.lua;

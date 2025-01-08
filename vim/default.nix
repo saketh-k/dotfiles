@@ -30,7 +30,7 @@
     viAlias = true;
     vimAlias = true;
     plugins = {
-      copilot-vim.enable = true;
+      #copilot-vim.enable = true;
       fzf-lua.enable = true;
       telescope.enable = true;
       web-devicons.enable = true;
