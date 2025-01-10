@@ -34,7 +34,12 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    pkgs.obsidian
+    (pkgs.makeDesktopItem {
+      name = "obsidian";
+      exec = "${pkgs.obsidian}/bin/obsidian --ozone-platform=wayland";
+      desktopName = "Obsidian";
+      })
+    #pkgs.obsidian
     pkgs.tmux
     pkgs.playerctl
     pkgs.xorg.xmodmap

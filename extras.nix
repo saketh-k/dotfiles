@@ -9,6 +9,31 @@
 	enableBashIntegration = true;
   };
   
+  programs.ssh = {
+	enable = true;
+	addKeysToAgent = "yes";
+	matchBlocks = {
+		"rel" = {
+			host = "rel";
+			hostname = "robotecologymain.ts.saketh.dev";
+			user = "robotecologymain";
+			forwardAgent = true;
+			forwardX11 = true;
+			forwardX11Trusted = true;
+		};
+		"ubnt_home" = {
+			host = "ubnt_home";
+			hostname = "100.94.160.151";
+			user = "saketh";
+		};
+		"uci_hpc" = {
+			host = "uci_hpc";
+			hostname = "hpc3.rcic.uci.edu";
+			port = 6000;
+			user = "skarumur";
+		};
+	};
+  };
   programs.zoxide = {
 	enable = true;
 	enableBashIntegration = true;
@@ -127,6 +152,7 @@
     desktopName = "Discord";
   })
     # pkgs-unstable.discord-canary
+    mathematica
     pkgs-unstable.ghostty
     thunderbird
     bottom

@@ -48,7 +48,7 @@ in
       '';
 
     config = rec {
-      terminal = "kitty";
+      terminal = "wezterm";
       modifier = "Mod4";
       startup = [
         { command = "obsidian --ozone-platform=wayland --enable-features=UseOzonePlatform"; }
