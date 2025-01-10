@@ -75,12 +75,14 @@ in
       output = {
         DP-1 = {
           resolution = "3840x2160@30Hz";
+          background = "backgrounds/cloud.png fill";
         };
         eDP-1 = {
           scale = "3.5";
           background = "backgrounds/cloud.png fill";
         };
         "Samsung Electric Company U32R59x HNMN703160" = {
+          background = "backgrounds/cloud.png fill";
           scale = "2.6";
         };
       };
