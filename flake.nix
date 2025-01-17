@@ -1,24 +1,33 @@
 {
   # Define the inputs (dependencies) for your flake
   inputs = {
-    alacritty-theme = {
-      url = "github:alexghr/alacritty-theme.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nixvim = {
       url = "path:./vim/";
       # url = "github:nix-community/nixvim/nixos-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs = {
+        url = "github:NixOS/nixpkgs/nixos-24.11";
+    };
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
+      #useGlobalPkgs = true;
     };
-    neovim-flake.url = "github:jordanisaacs/neovim-flake";
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
-    ghostty.url = "github:ghostty-org/ghostty";
+    neovim-flake = {
+    	url = "github:jordanisaacs/neovim-flake";
+	inputs.nixpkgs.follows = "nixpkgs";
+    };
+    zen-browser = {
+      url = "github:MarceColl/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # ghostty = {
+    #   url = "github:ghostty-org/ghostty";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   # Define the outputs of the flake
@@ -30,13 +39,12 @@
     home-manager,
     neovim-flake,
     zen-browser,
-    ghostty,
-    alacritty-theme,
+    # ghostty,
     ...
   }: let
     # Specify the system architecture (make sure this matches your platform)
     system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
+    pkgs = import nixpkgs { inherit system ; config.allowUnfree = true;config.allowUnfreePredicate = _: true;};
     pkgs-unstable = import nixos-unstable {inherit system; config.allowUnfree = true; };
   in {
     # Define Home Manager configurations
@@ -49,7 +57,6 @@
         modules = [
           {
             # Use the Alacritty theme
-            nixpkgs.overlays = [ alacritty-theme.overlays.default ];
             home.packages = [
               zen-browser.packages.${system}.default
 	      nixvim.packages.${system}.default

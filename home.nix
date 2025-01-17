@@ -10,6 +10,7 @@
     ./sway
     ./fonts.nix
     ./extras.nix
+    ./desktop_apps
     ./tmux
     ./wofi
     ./tofi
@@ -34,12 +35,12 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    (pkgs.makeDesktopItem {
-      name = "obsidian";
-      exec = "${pkgs.obsidian}/bin/obsidian --ozone-platform=wayland";
-      desktopName = "Obsidian";
-      })
-    #pkgs.obsidian
+   # (pkgs.makeDesktopItem {
+   #   name = "obsidian";
+   #   exec = "${pkgs.obsidian}/bin/obsidian --ozone-platform=wayland";
+   #   desktopName = "Obsidian";
+   #   })
+    pkgs.obsidian
     pkgs.tmux
     pkgs.playerctl
     pkgs.xorg.xmodmap
@@ -58,7 +59,7 @@
         selection.save_to_clipboard = true;
         shell.program = "tmux";
         font.size = 12;
-        import = [ pkgs.alacritty-theme.tokyo_night ];
+        # import = [ pkgs.alacritty-theme.tokyo_night ];
         font.normal = {
           family = "Fira Code";
         };
@@ -66,7 +67,7 @@
     };
 
     wezterm = {
-      enable = lib.mkDefault true;
+      enable = true;
       enableBashIntegration = true;
     };
 
@@ -96,7 +97,11 @@
     };
   };
 
-  nixpkgs.config.allowUnfree = true;
+  #nixpkgs.config.allowUnfree = true;
+  #nixpkgs.config.allowUnfreePredicate = pkg: 
+  #  builtins.elem (pkgs.lib.getName pkg) [
+  #    "copilot.vim"
+  #  ];
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {

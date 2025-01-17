@@ -9,7 +9,10 @@
 {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
+    inputs.nixpkgs
   ];
+  inputs.nixpkgs.config.allowUnfreePredicate = _ : true;
+  inputs.nixpkgs.config.allowUnfree= true;
   programs.nixvim = {
     enable = true;
     defaultEditor = true;

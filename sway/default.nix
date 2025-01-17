@@ -51,7 +51,7 @@ in
       terminal = "wezterm";
       modifier = "Mod4";
       startup = [
-        { command = "obsidian --ozone-platform=wayland --enable-features=UseOzonePlatform"; }
+        #{ command = "obsidian --ozone-platform=wayland --enable-features=UseOzonePlatform"; }
         {
           command = "systemctl --user restart kanshi.service";
           always = true;
@@ -216,7 +216,7 @@ in
         "sway/window": {
             "format": "{}",
             "rewrite": {
-                "(.*)YouTube(*.)": "$1  ",
+                "(.*)YouTube(.*)": "$1  ",
                 "(.*)— Mozilla Firefox": "🌎 $1",
                 "(.*)— Zen Browser": "🌎 $1",
                 "(.*)Alacritty": " $1"

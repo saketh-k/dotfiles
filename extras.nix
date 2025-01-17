@@ -145,12 +145,19 @@
   #   };
   # };
   home.packages = with pkgs; [
-        (pkgs.makeDesktopItem {
-    name = "discord";
-    exec =
-      "env -u NIXOS_OZONE_WL ${pkgs-unstable.discord}/bin/discord --enable-features=UseOzonePlatform --ozone-platform=wayland  --use-gl=desktop";
-    desktopName = "Discord";
-  })
+    (pkgs.makeDesktopItem {
+      name = "discord";
+      exec =
+        "env -u NIXOS_OZONE_WL ${pkgs-unstable.discord}/bin/discord --enable-features=UseOzonePlatform --ozone-platform=wayland  --use-gl=desktop";
+      desktopName = "Discord";
+    })
+
+    (pkgs.makeDesktopItem {
+      name = "vscode";
+      exec =
+        "env -u NIXOS_OZONE_WL ${pkgs-unstable.vscode}/bin/code --ozone-platform=wayland";
+      desktopName = "Code";
+    })
     # pkgs-unstable.discord-canary
     mathematica
     pkgs-unstable.ghostty

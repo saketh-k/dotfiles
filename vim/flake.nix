@@ -3,12 +3,20 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixvim.url = "github:nix-community/nixvim";
+    nixvim={
+    	url = "github:nix-community/nixvim";
+	inputs.nixpkgs.follows = "nixpkgs";
+	inputs.home-manager.follows = "home-manager";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager/release-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
   outputs =
-    { nixvim, flake-parts, ... }@inputs:
+    { nixvim, flake-parts, nixpkgs, ... }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "x86_64-linux"
@@ -34,6 +42,7 @@
           nvim = nixvim'.makeNixvimWithModule nixvimModule;
         in
         {
+	  _module.args.pkgs = import nixpkgs { inherit system; config.allowUnfree = true; config.allowUnfreePredicate = _: true;};
           checks = {
             # Run `nix flake check .` to verify that your config is not broken
             default = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;

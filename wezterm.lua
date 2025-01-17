@@ -29,7 +29,6 @@ config.keys = {
     mods="LEADER",
     action={PasteFrom="Clipboard"}
   },
-
 }
 
 

@@ -7,7 +7,7 @@ matching-algorithm = fuzzy
 # General behavior
 text-cursor = false
 history = true
-matching-algorithm = fuzzy
+# matching-algorithm = fuzzy
 
 # Style settings (Windows 95 theme)
 font = "Fira Mono 12"
