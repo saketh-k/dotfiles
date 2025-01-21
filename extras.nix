@@ -145,12 +145,14 @@
   #   };
   # };
   home.packages = with pkgs; [
-    (pkgs.makeDesktopItem {
-      name = "discord";
-      exec =
-        "env -u NIXOS_OZONE_WL ${pkgs-unstable.discord}/bin/discord --enable-features=UseOzonePlatform --ozone-platform=wayland  --use-gl=desktop";
-      desktopName = "Discord";
-    })
+  pkgs-unstable.discord
+  pkgs-unstable.chromium
+   # (pkgs.makeDesktopItem {
+   #   name = "discord";
+   #   exec =
+   #     "env -u NIXOS_OZONE_WL ${pkgs-unstable.discord}/bin/discord --enable-features=UseOzonePlatform --ozone-platform=wayland  --use-gl=desktop";
+   #   desktopName = "Discord";
+   # })
 
     (pkgs.makeDesktopItem {
       name = "vscode";

@@ -44,8 +44,6 @@
     pkgs.tmux
     pkgs.playerctl
     pkgs.xorg.xmodmap
-
-    pkgs.kitty-themes
   ];
 
   xdg.configFile."wezterm/wezterm.lua".source = config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/wezterm.lua;
