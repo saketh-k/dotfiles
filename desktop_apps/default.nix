@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgs-unstable,
   lib,
   inputs,
   ...
@@ -22,4 +23,20 @@
   Exec=${pkgs.mathematica}/bin/wolframnb
   Terminal=false
   '';
+
+  home.packages = with pkgs; [
+    (pkgs.obsidian.overrideAttrs (prevAttrs: rec {
+                desktopItem= (prevAttrs.desktopItem.override (d: {exec="${pkgs.obsidian}/bin/obsidian --ozone-platform-hint=auto";}));
+		installPhase = builtins.replaceStrings ["${prevAttrs.desktopItem}"] ["${desktopItem}"] prevAttrs.installPhase;
+		}
+	))
+    (pkgs-unstable.discord.overrideAttrs (prevAttrs: rec {
+                desktopItem= (prevAttrs.desktopItem.override (d: {exec="${pkgs-unstable.discord}/bin/discord --ozone-platform-hint=auto";}));
+		installPhase = builtins.replaceStrings ["${prevAttrs.desktopItem}"] ["${desktopItem}"] prevAttrs.installPhase;
+		}
+	))
+    pkgs-unstable.vscode
+    ];
+
+  
 }

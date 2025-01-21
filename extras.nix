@@ -145,7 +145,7 @@
   #   };
   # };
   home.packages = with pkgs; [
-  pkgs-unstable.discord
+  #pkgs-unstable.discord
   pkgs-unstable.chromium
    # (pkgs.makeDesktopItem {
    #   name = "discord";

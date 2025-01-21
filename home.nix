@@ -12,7 +12,6 @@
     ./extras.nix
     ./desktop_apps
     ./tmux
-    ./wofi
     ./tofi
     ./browsers
     ./games
@@ -40,7 +39,8 @@
    #   exec = "${pkgs.obsidian}/bin/obsidian --ozone-platform=wayland";
    #   desktopName = "Obsidian";
    #   })
-    pkgs.obsidian
+    #pkgs.obsidian
+
     pkgs.tmux
     pkgs.playerctl
     pkgs.xorg.xmodmap
