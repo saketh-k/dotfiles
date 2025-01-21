@@ -125,39 +125,12 @@
     show_notifications = true
   '';
 
-  # programs.firefox = {
-  #   enable = true;
-  #   
-  #   profiles.work = {
-  #     settings = {
-  #       "full-screen-api.ignore-widgets" = true;
-  #     };
-  #     userChrome = "";
-  #     isDefault = true;
-  #   };
-  #   
-  #   profiles.school = {
-  #     settings = {
-  #       "full-screen-api.ignore-widgets" = true;
-  #     };
-  #     userChrome = "";
-  #     id = 1;
-  #   };
-  # };
   home.packages = with pkgs; [
-  #pkgs-unstable.discord
-  pkgs-unstable.chromium
-   # (pkgs.makeDesktopItem {
-   #   name = "discord";
-   #   exec =
-   #     "env -u NIXOS_OZONE_WL ${pkgs-unstable.discord}/bin/discord --enable-features=UseOzonePlatform --ozone-platform=wayland  --use-gl=desktop";
-   #   desktopName = "Discord";
-   # })
-
+    pkgs-unstable.chromium
     (pkgs.makeDesktopItem {
       name = "vscode";
       exec =
-        "env -u NIXOS_OZONE_WL ${pkgs-unstable.vscode}/bin/code --ozone-platform=wayland";
+        "env -u NIXOS_OZONE_WL ${pkgs-unstable.vscode}/bin/code --ozone-platform-hint=wayland";
       desktopName = "Code";
     })
     # pkgs-unstable.discord-canary

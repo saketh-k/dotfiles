@@ -34,13 +34,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-   # (pkgs.makeDesktopItem {
-   #   name = "obsidian";
-   #   exec = "${pkgs.obsidian}/bin/obsidian --ozone-platform=wayland";
-   #   desktopName = "Obsidian";
-   #   })
-    #pkgs.obsidian
-
     pkgs.tmux
     pkgs.playerctl
     pkgs.xorg.xmodmap
@@ -49,15 +42,12 @@
   xdg.configFile."wezterm/wezterm.lua".source = config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/wezterm.lua;
   #TODO: Switch this to be a non-relative path
   programs = {
-
-    # Terminal tools
     alacritty = {
       enable = lib.mkDefault true;
       settings = {
         selection.save_to_clipboard = true;
         shell.program = "tmux";
         font.size = 12;
-        # import = [ pkgs.alacritty-theme.tokyo_night ];
         font.normal = {
           family = "Fira Code";
         };
@@ -71,7 +61,6 @@
 
     kitty = {
       enable = true;
-      # themeFile = ...; # "IR Black"
       shellIntegration.enableBashIntegration = true;
     };
     fastfetch.enable = true;
@@ -82,7 +71,6 @@
       shellAliases = {
         wake_desk = "wol 18:C0:4D:88:D7:08"; # Wake up my desktop
       };
-      # blesh.enable = true;
     };
 
     # Version Control tools
