@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgs-unstable,
   lib,
   ...
 }:
@@ -31,7 +32,7 @@ in
   xdg.configFile."sway/backgrounds/cloud.png".source = ./backgrounds/cloud.png;
   wayland.windowManager.sway = {
     enable = true;
-    package = pkgs.swayfx;
+    package = pkgs-unstable.swayfx;
 
     #TODO: When swayfx is fixed renenable config check
     checkConfig = false;

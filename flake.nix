@@ -8,7 +8,7 @@
       inputs.home-manager.follows = "home-manager";
     };
     nixpkgs = {
-        url = "github:NixOS/nixpkgs/1dab772dd4a68a7bba5d9460685547ff8e17d899";
+        url = "github:NixOS/nixpkgs/release-24.11";
     };
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
