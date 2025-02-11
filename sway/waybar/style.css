@@ -1,0 +1,100 @@
+* {
+    border: none;
+    font-size: 14px;
+    font-family: "JetBrainsMono Nerd Font,JetBrainsMono NF";
+    min-height: 25px;
+}
+
+window#waybar {
+  background: transparent;
+  margin: 5px;
+}
+
+#custom-logo {
+  padding: 0 10px;
+}
+
+.modules-right {
+  padding-left: 5px;
+  border-radius: 15px 0 0 15px;
+  margin-top: 2px;
+  background: #4c566a; /* Nord 2 */
+}
+
+.modules-center {
+  padding: 0 15px;
+  margin-top: 2px;
+  border-radius: 15px 15px 15px 15px;
+  background: #4c566a; /* Nord 2 */
+}
+
+.modules-left {
+  border-radius: 0 15px 15px 0;
+  margin-top: 2px;
+  background: #4c566a; /* Nord 2 */
+}
+
+#battery,
+#custom-clipboard,
+#custom-colorpicker,
+#custom-powerDraw,
+#bluetooth,
+#pulseaudio,
+#network,
+#disk,
+#memory,
+#backlight,
+#cpu,
+#temperature,
+#custom-weather,
+#idle_inhibitor,
+#jack,
+#tray,
+#window,
+#workspaces,
+#clock {
+  padding: 0 5px;
+  color: #eceff4; /* Nord 5: Light text for contrast */
+}
+
+#pulseaudio {
+  padding-top: 3px;
+}
+
+#temperature.critical,
+#pulseaudio.muted {
+  color: #bf616a; /* Nord 11: Red for alerts */
+  padding-top: 0;
+}
+
+#clock {
+  color: #88c0d0; /* Nord 8: Light cyan */
+}
+
+#battery.charging {
+    color: #eceff4; /* Nord 5: Light text */
+    background-color: #a3be8c; /* Nord 14: Green */
+}
+
+#battery.warning:not(.charging) {
+    background-color: #ebcb8b; /* Nord 13: Yellow */
+    color: #2e3440; /* Nord 0: Dark text */
+}
+
+#battery.critical:not(.charging) {
+    background-color: #bf616a; /* Nord 11: Red */
+    color: #eceff4; /* Nord 5: Light text */
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: #eceff4; /* Light contrast */
+        color: #2e3440; /* Dark text */
+    }
+}
+
