@@ -4,5 +4,6 @@
 # in order to get help commands etc.
 {
   home.packages = with pkgs; [
-    usbutils
+    blesh
   ];
+}

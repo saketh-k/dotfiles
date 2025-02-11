@@ -461,13 +461,13 @@
         "nixvim": "nixvim_2"
       },
       "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-KRMSSxJq4kisOwPCEvjCxqkcFAqaj53ATreUY+xIsP0=",
-        "path": "./vim/",
+        "lastModified": 1738814862,
+        "narHash": "sha256-tBw7gUIPHhNwtHNZTD7mycuSmTBLSh+MiX9C/3862qQ=",
+        "path": "/home/saketh/dotfiles/vim/",
         "type": "path"
       },
       "original": {
-        "path": "./vim/",
+        "path": "/home/saketh/dotfiles/vim/",
         "type": "path"
       }
     },

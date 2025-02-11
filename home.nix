@@ -15,6 +15,8 @@
     ./tofi
     ./browsers
     ./games
+    ./term
+    ./latex
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -34,6 +36,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    pkgs.neovim
     pkgs.tmux
     pkgs.playerctl
     pkgs.xorg.xmodmap
@@ -65,11 +68,14 @@
     };
     fastfetch.enable = true;
 
+    zoxide.enable = true;
+    zoxide.enableBashIntegration = true;
     bash = {
       enable = true;
       enableCompletion = true;
       shellAliases = {
         wake_desk = "wol 18:C0:4D:88:D7:08"; # Wake up my desktop
+        hms = "home-manager switch --flake ~/dotfiles";
       };
     };
 

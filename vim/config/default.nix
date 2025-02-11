@@ -9,6 +9,7 @@
 {
   imports = [
     ./bufferline.nix
+    ./lsp.nix
     #inputs.nixpkgs
   ];
     colorschemes = {
@@ -16,6 +17,7 @@
         enable = true;
         settings = {
           style = "night";
+          transparent = false;
         };
       };
     };
@@ -32,10 +34,13 @@
       fzf-lua.enable = true;
       telescope.enable = true;
       web-devicons.enable = true;
+      jupytext.enable = true;
+      magma-nvim.enable = true;
       harpoon = {
 	enable = true;
 	enableTelescope = true;
       };
+      nvim-snippets.enable = true;
       tmux-navigator.enable = true;
       nix.enable = true;
       which-key.enable = true;

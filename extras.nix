@@ -37,6 +37,7 @@
   programs.zoxide = {
 	enable = true;
 	enableBashIntegration = true;
+	options = ["--cmd cd"];
   };
   
   programs.thefuck = {
@@ -136,6 +137,7 @@
     # pkgs-unstable.discord-canary
     mathematica
     pkgs-unstable.ghostty
+    zotero
     thunderbird
     bottom
     htop

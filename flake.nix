@@ -2,7 +2,7 @@
   # Define the inputs (dependencies) for your flake
   inputs = {
     nixvim = {
-      url = "path:./vim/";
+      url = "path:/home/saketh/dotfiles/vim/";
       # url = "github:nix-community/nixvim/nixos-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
@@ -58,7 +58,7 @@
             # Use the Alacritty theme
             home.packages = [
               zen-browser.packages.${system}.default
-	      nixvim.packages.${system}.default
+              #nixvim.packages.${system}.default
 
               # neovim-flake.packages.${system}.maximal
             ];
