@@ -15,15 +15,15 @@
   Exec=${inputs.zen-browser.packages."x86_64-linux".default}/bin/zen -P school
   Terminal=false
   '';
-  home.file.".local/share/applications/wolfram.desktop".text = ''
-  [Desktop Entry]
-  Version=1.0
-  Type=Application
-  Name= Wolfram Notebook
-  Exec=${pkgs.mathematica}/bin/wolframnb
-  Terminal=false
-  '';
-
+  # home.file.".local/share/applications/wolfram.desktop".text = ''
+  # [Desktop Entry]
+  # Version=1.0
+  # Type=Application
+  # Name= Wolfram Notebook
+  # Exec=${pkgs.mathematica}/bin/wolframnb
+  # Terminal=false
+  # '';
+  #
   home.packages = with pkgs; [
     (pkgs.obsidian.overrideAttrs (prevAttrs: rec {
                 desktopItem= (prevAttrs.desktopItem.override (d: {exec="${pkgs.obsidian}/bin/obsidian --ozone-platform-hint=auto";}));

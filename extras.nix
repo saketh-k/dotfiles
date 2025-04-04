@@ -135,10 +135,10 @@
       desktopName = "Code";
     })
     # pkgs-unstable.discord-canary
-    mathematica
+    #mathematica
     pkgs-unstable.ghostty
     zotero
-    thunderbird
+    #thunderbird
     bottom
     htop
     fastfetch

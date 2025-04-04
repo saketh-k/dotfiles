@@ -1,34 +1,35 @@
-
-local wezterm = require 'wezterm'
+local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
-config.front_end = "WebGpu"
+config.front_end = "OpenGL"
 config.color_scheme = "nord"
+-- config.enable_wayland = false
+--config.freetype_load_target = "Normal"
 
 config.colors = {
-  tab_bar = {
-      background = "#2E3440",
-      active_tab = {
-        bg_color = "#4C566A",
-        fg_color = "#D8DEE9",
-      },
-      inactive_tab = {
-        bg_color = "#3B4252",
-        fg_color = "#D8DEE9",
-      },
-      inactive_tab_hover = {
-        bg_color = "#4C566A",
-        fg_color = "#D8DEE9",
-      },
-      new_tab = {
-        bg_color = "#3B4252",
-        fg_color = "#D8DEE9",
-      },
-      new_tab_hover = {
-        bg_color = "#4C566A",
-        fg_color = "#D8DEE9",
-      }
-  }
+	tab_bar = {
+		background = "#2E3440",
+		active_tab = {
+			bg_color = "#4C566A",
+			fg_color = "#D8DEE9",
+		},
+		inactive_tab = {
+			bg_color = "#3B4252",
+			fg_color = "#D8DEE9",
+		},
+		inactive_tab_hover = {
+			bg_color = "#4C566A",
+			fg_color = "#D8DEE9",
+		},
+		new_tab = {
+			bg_color = "#3B4252",
+			fg_color = "#D8DEE9",
+		},
+		new_tab_hover = {
+			bg_color = "#4C566A",
+			fg_color = "#D8DEE9",
+		},
+	},
 }
 
 -- config.webgpu_power_preference = "HighPerformance"
@@ -46,24 +47,23 @@ config.window_padding = {
 
 -- Keybindings
 
-config.leader = { key="Space", mods="CTRL" }
+config.leader = { key = "Space", mods = "CTRL" }
 config.keys = {
-  {
-    key="|",
-    mods="LEADER|SHIFT",
-    action=wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}},
-  },
-  {
-    key="c",
-    mods="LEADER",
-    action={CopyTo="Clipboard"}
-  },
-  {
-    key="v",
-    mods="LEADER",
-    action={PasteFrom="Clipboard"}
-  },
+	{
+		key = "|",
+		mods = "LEADER|SHIFT",
+		action = wezterm.action({ SplitHorizontal = { domain = "CurrentPaneDomain" } }),
+	},
+	{
+		key = "c",
+		mods = "LEADER",
+		action = { CopyTo = "Clipboard" },
+	},
+	{
+		key = "v",
+		mods = "LEADER",
+		action = { PasteFrom = "Clipboard" },
+	},
 }
-
 
 return config

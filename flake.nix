@@ -1,12 +1,6 @@
 {
   # Define the inputs (dependencies) for your flake
   inputs = {
-    nixvim = {
-      url = "path:/home/saketh/dotfiles/vim/";
-      # url = "github:nix-community/nixvim/nixos-24.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
     nixpkgs = {
         url = "github:NixOS/nixpkgs/release-24.11";
     };
@@ -14,10 +8,6 @@
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    neovim-flake = {
-    	url = "github:jordanisaacs/neovim-flake";
-	inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
       url = "github:MarceColl/zen-browser-flake";
@@ -34,9 +24,7 @@
     self,
     nixpkgs,
     nixos-unstable,
-    nixvim,
     home-manager,
-    neovim-flake,
     zen-browser,
     # ghostty,
     ...
@@ -46,6 +34,7 @@
     pkgs = import nixpkgs { inherit system ; config.allowUnfree = true;config.allowUnfreePredicate = _: true;};
     pkgs-unstable = import nixos-unstable {inherit system; config.allowUnfree = true; };
   in {
+    defaultPackage.${system} = home-manager.defaultPackage.${system};
     # Define Home Manager configurations
     homeConfigurations = {
       saketh = home-manager.lib.homeManagerConfiguration {
@@ -58,17 +47,29 @@
             # Use the Alacritty theme
             home.packages = [
               zen-browser.packages.${system}.default
-              #nixvim.packages.${system}.default
-
-              # neovim-flake.packages.${system}.maximal
-            ];
-          }
+              ];}
           ./home.nix # Path to your actual configuratin file
+  #         ({ pkgs, ... }: {
+  #           nixpkgs.overlays = [
+  #             (final: prev: {
+  #               wezterm = prev.wezterm.overrideAttrs (old: {
+  #                 patches = (old.patches or [ ]) ++ [
+  #                   (final.fetchpatch {
+  #                     url = "https://patch-diff.githubusercontent.com/raw/wez/wezterm/pull/6508.patch";
+  #                     sha256 = "sha256-eMpg206tUw8m0Sz+3Ox7HQnejPsWp0VHVw169/Rt4do=";
+  #                   })
+  #                 ];
+  #               });
+  #             })
+  #           ];
+  # })
+            ];
+          };
+
           #nixvim.homeConfigurations.nixvim
-        ];
       };
     };
 
     # Expose Neovim as a package for the system
-  };
-}
+  }
+
