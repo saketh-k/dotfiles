@@ -6,3 +6,4 @@
   home.packages = with pkgs; [
     usbutils
   ];
+}

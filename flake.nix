@@ -64,6 +64,7 @@
             ];
           }
           ./home.nix # Path to your actual configuratin file
+          ./term/
           #nixvim.homeConfigurations.nixvim
         ];
       };
