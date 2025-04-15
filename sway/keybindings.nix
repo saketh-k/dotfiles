@@ -25,6 +25,7 @@ in {
     "Print" = "exec grim -g \"\$(slurp)\" - | wl-copy";
     # Set waybar to visible
     "${modifier}+I" = "bar mode toggle";
+    "${modifier}+Shift+I" = "bar mode invisible";
 
     #Toggle laptop output
     "XF86Search" = "output eDP-1 toggle";

@@ -32,7 +32,7 @@
       for_window [class=".*"] border none
       '';
 
-    config = rec {
+    config = {
       terminal = "wezterm";
       modifier = "Mod4";
       startup = [
@@ -130,12 +130,6 @@
       };
       menu = "${pkgs.tofi}/bin/tofi-drun | xargs swaymsg exec --";
 
-    };
-  };
-  programs.swaylock = {
-    enable = false;
-    settings = {
-      color = "808080";
     };
   };
   services.swayidle = {
