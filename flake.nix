@@ -10,7 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
-      url = "github:MarceColl/zen-browser-flake";
+      url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # ghostty = {
@@ -49,6 +49,16 @@
               zen-browser.packages.${system}.default
               ];}
           ./home.nix # Path to your actual configuratin file
+          ./sway
+          ./fonts.nix
+          ./extras.nix
+          ./term
+          ./tofi
+          ./games
+          ./latex
+          ./desktop_apps
+          ./browsers
+
   #         ({ pkgs, ... }: {
   #           nixpkgs.overlays = [
   #             (final: prev: {

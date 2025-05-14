@@ -8,5 +8,8 @@
     unzip
     pkgs-unstable.nix-output-monitor
     pkgs-unstable.nh
+    colorls
+    just
+    yazi
   ];
 }

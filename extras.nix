@@ -3,12 +3,12 @@
 {
   programs.bash.enable=true;
   programs.bash.initExtra = "alias fp=\"firefox -P\""; programs.spotify-player.enable = true;
-  
+ 
   programs.autojump = {
 	enable = true;
 	enableBashIntegration = true;
   };
-  
+ 
   programs.ssh = {
 	enable = true;
 	addKeysToAgent = "yes";
@@ -29,22 +29,36 @@
 		"uci_hpc" = {
 			host = "uci_hpc";
 			hostname = "hpc3.rcic.uci.edu";
-			port = 6000;
 			user = "skarumur";
+			forwardAgent = true;
+			forwardX11 = true;
+			forwardX11Trusted = true;
+		};
+		"win_home" = {
+			host = "win_home";
+			hostname = "desktop";
+			user = "skaru";
+			forwardAgent = true;
+			forwardX11 = true;
+			forwardX11Trusted = true;
 		};
 	};
+	extraConfig = ''
+	Host *
+	    IdentityAgent ~/.1password/agent.sock
+    '';
   };
   programs.zoxide = {
 	enable = true;
 	enableBashIntegration = true;
 	options = ["--cmd cd"];
   };
-  
+ 
   programs.thefuck = {
 	enable = true;
 	enableBashIntegration = true;
   };
-  
+ 
   programs.starship = {
     enable = true;
     enableBashIntegration = true;
@@ -70,13 +84,13 @@
     [ ](fg:#1d2230)\
     $cmd_duration\
     \n$character"""
-    
+
     [directory]
     style = "fg:#e3e5e5 bg:#769ff0"
     format = "[ $path ]($style)"
     truncation_length = 3
     truncation_symbol = "…/"
-    
+
     [directory.substitutions]
     "Documents" = "󰈙 "
     "Downloads" = " "
@@ -84,36 +98,36 @@
     "Pictures" = " "
     "Development" = " "
     "dotfiles" = " "
-    
+
     [git_branch]
     symbol = ""
     style = "bg:#394260"
     format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
-    
+
     [git_status]
     style = "bg:#394260"
     format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
-    
+
     [nodejs]
     symbol = ""
     style = "bg:#212736"
     format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
-    
+
     [rust]
     symbol = ""
     style = "bg:#212736"
     format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
-    
+
     [golang]
     symbol = ""
     style = "bg:#212736"
     format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
-    
+
     [php]
     symbol = ""
     style = "bg:#212736"
     format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
-    
+
     [time]
     disabled = false
     time_format = "%R" # Hour:Minute Format
@@ -140,9 +154,7 @@
     zotero
     #thunderbird
     bottom
-    htop
     fastfetch
-    ytfzf
     mpv
     fzf
     dmenu
