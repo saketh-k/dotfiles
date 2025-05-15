@@ -10,9 +10,9 @@
     enable = true;
     settings = {
       general = {
-        no_fade_in = true;
         hide_cursor = false;
       };
+      animations.enabled = false;
       background = [
         {
           path = "screenshot";
@@ -25,8 +25,15 @@
           enabled = true;
           ready_message = "Scan yer fingie";
           present_message = "Scanning";
-          retry_dely = 240;
+          retry_delay = 240;
         };
+      };
+      label = {
+        text = "$TIME";
+        font_size = 90;
+        font_family = "Monospace";
+        halign = "right";
+        valign = "top";
       };
     };
   };
