@@ -9,6 +9,7 @@
   imports = [
     ./keybindings.nix
     ./kanshi.nix
+    ./hyprlock.nix
   ];
   xdg.configFile."sway/backgrounds/cloud.png".source = ./backgrounds/cloud.png;
   xdg.configFile."sway/backgrounds/forest.png".source = ./backgrounds/forest.png;
@@ -64,8 +65,8 @@
           background = "backgrounds/forest.png fill";
         };
         eDP-1 = {
-          scale = "3.5";
-          background = "backgrounds/forest.png fill";
+          scale = "2";
+          adaptive_sync = "enable"; background = "backgrounds/forest.png fill";
         };
         "Samsung Electric Company U32R59x HNMN703160" = {
           background = "backgrounds/forest.png fill";
@@ -154,17 +155,18 @@
   };
   services.mako = {
     enable = true;
+    settings = {
     sort = "-time";
     font = "monospace 14";
     layer = "overlay";
     width = 300;
     height = 110;
-    borderSize = 0;
-    borderRadius = 5;
+    border-size = 0;
+    border-radius = 5;
     icons = true;
-    maxIconSize = 64;
-    defaultTimeout = 5000;
-    backgroundColor = "#2e344044";
+    max-icon-size = 64;
+    default-timeout = 5000;
+    background-color = "#2e344044"; };
   };
   home.file.".config/waybar/style.css".source = config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/sway/waybar/style.css;
   home.file.".config/waybar/config".source = config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/sway/waybar/config;

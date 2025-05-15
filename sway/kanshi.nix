@@ -13,7 +13,7 @@
       { profile = {
           name = "undocked";
           outputs = [
-            { criteria = "eDP-1"; status = "enable"; }
+            { criteria = "eDP-1"; status = "enable";}
           ];
         };
       }
