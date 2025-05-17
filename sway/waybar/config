@@ -79,16 +79,16 @@
       "format-disconnected": "",
       "tooltip-format": "{ipaddr}",
       "tooltip-format-wifi": "{essid} ({signalStrength}%)  | {ipaddr}",
-      "tooltip-format-ethernet": "{ifname} 🖧 | {ipaddr}",
+      "tooltip-format-ethernet": "{ifname} 󰈁 | {ipaddr}",
       "on-click": "networkmanager_dmenu"
     },
 
 "battery": {
     "interval":1,
         "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 20
+            "good": 90,
+            "warning": 35,
+            "critical": 25
         },
         "format": "{capacity}%  {icon} ",
         "format-charging": "{capacity}% 󰂄 ",
@@ -178,7 +178,7 @@
     "phone": "",
     "portable": "",
     "car": "",
-    "default": ["🕨","🕩","🕪"]
+    "default": ["󰕿","󰖀","󰕾","󱄡"]
   },
   "justify": "center",
   "on-click": "amixer sset Master toggle",

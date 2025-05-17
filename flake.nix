@@ -13,10 +13,6 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # ghostty = {
-    #   url = "github:ghostty-org/ghostty";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 
   # Define the outputs of the flake
@@ -40,7 +36,7 @@
       saketh = home-manager.lib.homeManagerConfiguration {
         # Define the Home Manager environment
         pkgs = pkgs;
-	extraSpecialArgs = {inherit inputs pkgs-unstable; };
+	extraSpecialArgs = {inherit pkgs-unstable zen-browser; };
         # Home Manager modules
         modules = [
           {

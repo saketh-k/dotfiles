@@ -2,24 +2,10 @@
   config,
   lib,
   pkgs,
-  inputs,
   pkgs-unstable,
   ...
 }:
 {
-  imports = [
-    # ./sway
-    # ./fonts.nix
-    # ./extras.nix
-    # ./desktop_apps
-    # ./tmux
-    # ./tofi
-    # ./browsers
-    # ./games
-    # ./term
-    # ./latex
-  ];
-
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "saketh";
@@ -72,15 +58,6 @@
 
     zoxide.enable = true;
     zoxide.enableBashIntegration = true;
-    bash = {
-      enable = true;
-      enableCompletion = true;
-      shellAliases = {
-        wake_desk = "wol 18:C0:4D:88:D7:08"; # Wake up my desktop
-        hms = "home-manager switch --flake ~/dotfiles";
-        nvim = "/home/saketh/.config/nvim/result/bin/nvim";
-      };
-    };
 
     # Version Control tools
     gh.enable = true;
@@ -88,7 +65,6 @@
       enable = true;
       userName = lib.mkDefault "Saketh Karumuri";
       userEmail = lib.mkDefault "skarumuri1@gmail.com";
-
     };
   };
 

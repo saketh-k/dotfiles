@@ -2,8 +2,7 @@
   config,
   pkgs,
   pkgs-unstable,
-  lib,
-  inputs,
+  zen-browser,
   ...
 }:
 {
@@ -12,7 +11,7 @@
   Version=1.0
   Type=Application
   Name=Zen (School)
-  Exec=${inputs.zen-browser.packages."x86_64-linux".default}/bin/zen -P school
+  Exec=${zen-browser.packages."x86_64-linux".default}/bin/zen -P school
   Terminal=false
   '';
   # home.file.".local/share/applications/wolfram.desktop".text = ''

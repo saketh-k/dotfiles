@@ -1,53 +1,13 @@
 {lib, config, pkgs, pkgs-unstable,...}:
 
 {
-  programs.bash.enable=true;
-  programs.bash.initExtra = "alias fp=\"firefox -P\""; programs.spotify-player.enable = true;
+  programs.spotify-player.enable = true;
  
   programs.autojump = {
 	enable = true;
 	enableBashIntegration = true;
   };
  
-  programs.ssh = {
-	enable = true;
-	addKeysToAgent = "yes";
-	matchBlocks = {
-		"rel" = {
-			host = "rel";
-			hostname = "robotecologymain.ts.saketh.dev";
-			user = "robotecologymain";
-			forwardAgent = true;
-			forwardX11 = true;
-			forwardX11Trusted = true;
-		};
-		"ubnt_home" = {
-			host = "ubnt_home";
-			hostname = "100.94.160.151";
-			user = "saketh";
-		};
-		"uci_hpc" = {
-			host = "uci_hpc";
-			hostname = "hpc3.rcic.uci.edu";
-			user = "skarumur";
-			forwardAgent = true;
-			forwardX11 = true;
-			forwardX11Trusted = true;
-		};
-		"win_home" = {
-			host = "win_home";
-			hostname = "desktop";
-			user = "skaru";
-			forwardAgent = true;
-			forwardX11 = true;
-			forwardX11Trusted = true;
-		};
-	};
-	extraConfig = ''
-	Host *
-	    IdentityAgent ~/.1password/agent.sock
-    '';
-  };
   programs.zoxide = {
 	enable = true;
 	enableBashIntegration = true;

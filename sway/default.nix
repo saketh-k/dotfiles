@@ -13,6 +13,14 @@
   ];
   xdg.configFile."sway/backgrounds/cloud.png".source = ./backgrounds/cloud.png;
   xdg.configFile."sway/backgrounds/forest.png".source = ./backgrounds/forest.png;
+  xdg.configFile."sway/backgrounds/tree.jpg".source = ./backgrounds/tree.jpg;
+  xdg.configFile."sway/backgrounds/beach.jpg".source = ./backgrounds/beach.jpg;
+  
+  # WAYLAND APP FIX (hopefuly)
+  home.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
+
   wayland.windowManager.sway = {
     enable = true;
     package = pkgs-unstable.swayfx;
@@ -62,27 +70,25 @@
       output = {
         DP-1 = {
           resolution = "3840x2160@30Hz";
-          background = "backgrounds/forest.png fill";
+          background = "backgrounds/beach.jpg fill";
         };
         eDP-1 = {
           scale = "2";
-          adaptive_sync = "enable"; background = "backgrounds/forest.png fill";
+          adaptive_sync = "enable";
+          background = "backgrounds/beach.jpg fill";
         };
         "Samsung Electric Company U32R59x HNMN703160" = {
-          background = "backgrounds/forest.png fill";
-          scale = "2.6";
+          background = "backgrounds/beach.jpg fill";
+          scale = "1.5";
         };
       };
       input = {
-        "1739:30383:DELL08AF:00_06CB:76AF_Touchpad" = {
+        "2362:628:PIXA3854:00_093A:0274_Touchpad" = {
           tap = "enabled";
           dwt = "enabled";
           middle_emulation = "enabled";
           natural_scroll = "enabled";
           tap_button_map = "lrm";
-        };
-        "1267:10548:ELAN2934:00_04F3:2934" = {
-          map_to_output = "eDP-1";
         };
       };
       # TODO: Move this color theming block to it's own module/ flake
@@ -134,14 +140,14 @@
     };
   };
   services.swayidle = {
-    enable = false;
+    enable = true;
     timeouts = [
       {
-        timeout = 60;
-        command = "${pkgs.swaylock}/bin/swaylock -fF";
+        timeout = 270;
+        command = "${pkgs.hyprlock}/bin/hyprlock";
       }
       {
-        timeout = 90;
+        timeout = 300;
         command = "${pkgs.systemd}/bin/systemctl suspend";
       }
     ];
@@ -157,7 +163,7 @@
     enable = true;
     settings = {
     sort = "-time";
-    font = "monospace 14";
+    font = "Fira Code";
     layer = "overlay";
     width = 300;
     height = 110;
