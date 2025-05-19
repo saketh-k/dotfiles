@@ -68,6 +68,7 @@
       window.border = 0;
       floating.border = 0;
       output = {
+        "*".background = "backgrounds/beach.jpg fill";
         DP-1 = {
           resolution = "3840x2160@30Hz";
           background = "backgrounds/beach.jpg fill";
@@ -136,7 +137,6 @@
         };
       };
       menu = "${pkgs.tofi}/bin/tofi-drun | xargs swaymsg exec --";
-
     };
   };
   services.swayidle = {
@@ -146,10 +146,9 @@
         timeout = 270;
         command = "${pkgs.hyprlock}/bin/hyprlock";
       }
-      {
-        timeout = 300;
-        command = "${pkgs.systemd}/bin/systemctl suspend";
-      }
+    ];
+    events = [
+      {event = "before-sleep";command = "${pkgs.hyprlock}/bin/hyprlock";}
     ];
   };
   home.packages = [
