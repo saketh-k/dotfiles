@@ -4,7 +4,8 @@ local config = wezterm.config_builder()
 config.front_end = "WebGpu"
 config.color_scheme = "gruvbox_material_dark_medium"
 config.color_scheme = "Gruvbox dark, medium (base16)"
--- config.enable_wayland = false
+config.enable_wayland = true
+config.window_decorations = "NONE"
 --config.freetype_load_target = "Normal"
 
 -- config.colors = {
@@ -33,6 +34,8 @@ config.color_scheme = "Gruvbox dark, medium (base16)"
 -- 	},
 -- }
 --
+config.adjust_window_size_when_changing_font_size = false
+config.tiling_desktop_environments = {}
 
 config.color_schemes = {
 	["gruvbox_material_dark_medium"] = {
