@@ -11,9 +11,18 @@ window#waybar {
   margin: 5px;
 }
 
-#temperature,
 #custom-logo {
-  padding: 0 10px;
+  padding: 0 5px;
+  color: #d79921;
+}
+#temperature{
+  padding-left: 15px;
+  color: #d79921;
+  padding-right: 4px;
+}
+#cpu {
+  padding-left: 5px;
+  padding-right:9px;
   color: #d79921;
 }
 
@@ -47,7 +56,6 @@ window#waybar {
 #disk,
 #memory,
 #backlight,
-#cpu,
 #custom-weather,
 #idle_inhibitor,
 #jack,
@@ -57,6 +65,10 @@ window#waybar {
 #clock {
   padding: 0 5px;
   color: #bdae93; /* Nord 5: Light text for contrast */
+}
+
+#clock {
+  padding-right: 10px;
 }
 
 #workspaces button {
@@ -90,7 +102,7 @@ window#waybar {
 }
 
 #battery.charging {
-    color: #eceff4; /* Nord 5: Light text */
+    color: #282828; /* Nord 5: Light text */
     background-color: #b8bb26 ; /* Nord 14: Green */
 }
 

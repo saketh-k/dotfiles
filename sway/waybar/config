@@ -2,7 +2,7 @@
   "bar_id": "bar-0",
   "ipc": true,
   "layer": "top", "position": "top",
-  "modules-left": ["custom/logo",   "temperature" ],
+  "modules-left": ["custom/logo",   "temperature" , "cpu"],
   "modules-center": [  "sway/workspaces"],
   "modules-right": ["tray", "backlight", "bluetooth", "pulseaudio", "network",  "battery", "clock" ],
   "reload_style_on_change":true,
@@ -50,7 +50,7 @@
 
 
 "clock": {
-      "format": "{:%I:%M:%S %p}",
+      "format": "{:%I:%M:%S}",
       "interval":1,
       "tooltip-format": "\n<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
       "calendar-weeks-pos": "right",
@@ -140,9 +140,9 @@
 
   "cpu": {
       "interval": 1,
-      "format": "  {usage}%",
-      "min-length": 6,
-      "max-length": 6,
+      "format": "{icon}",
+      "min-length": 1,
+      "max-length": 1,
       "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
  },
 
@@ -159,10 +159,11 @@
 },
 
 "temperature": {
+  "thermal-zone": 1,
   "format": " {temperatureC}°C",            
   "format-critical": " {temperatureC}°C",
   "interval": 1,
-  "critical-threshold": 80,
+  "critical-threshold": 70,
   "on-click": "wezterm btm",
  },
 
