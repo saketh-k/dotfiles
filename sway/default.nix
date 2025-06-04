@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  pkgs-unstable,
   lib,
   ...
 }:
@@ -23,7 +22,7 @@
 
   wayland.windowManager.sway = {
     enable = true;
-    package = pkgs-unstable.swayfx;
+    package = pkgs.swayfx;
 
     #TODO: When swayfx is fixed renenable config check
     checkConfig = false;

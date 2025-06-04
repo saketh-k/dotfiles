@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  pkgs-unstable,
   ...
 }:
 {
@@ -45,7 +44,7 @@
     };
 
     wezterm = {
-      package = pkgs-unstable.wezterm;
+      package = pkgs.wezterm;
       enable = true;
       enableBashIntegration = true;
     };

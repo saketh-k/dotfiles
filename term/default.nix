@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable,... }:
+{ config, pkgs,... }:
 
 # Import some common debugging packages often included with busy box separately
 # in order to get help commands etc.
@@ -6,11 +6,11 @@
   home.packages = with pkgs; [
     blesh
     unzip
-    pkgs-unstable.nix-output-monitor
-    pkgs-unstable.nh
+    pkgs.nix-output-monitor
+    pkgs.nh
     colorls
     just
-    yazi
+    evil-helix
   ];
 
   programs.bash = {
@@ -71,4 +71,15 @@
       '';
     };
 
+  programs.yazi = {
+    enable = true;
+    enableBashIntegration = true;
+    shellWrapperName = "y";
+
+    settings = {
+      manager = {
+        show_hidden = true;
+      };
+    };
+  };
 }

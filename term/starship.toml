@@ -1,0 +1,97 @@
+format = """
+[░▒▓](os_background)\
+[  ](bg:os_background fg:os_foreground)\
+[](bg:dir_bg fg:os_background)\
+$directory\
+[](fg:dir_bg bg:git_bg)\
+$git_branch\
+$git_status\
+[](fg:git_bg bg:lang_bg)\
+$nodejs\
+$rust\
+$golang\
+$php\
+[](fg:lang_bg bg:time_bg)\
+$time\
+[ ](fg:time_bg)\
+$cmd_duration\
+\n$character"""
+
+palette = 'gruvbox'
+
+[palettes.nord]
+os_background = "#a3aed2"
+os_foreground = "#090c0c"
+dir_bg = "#769ff0"
+dir_fg = "#e3e5e5"
+git_bg = "#394260"
+lang_bg = "#212736"
+lang_fg = "#769ff0"
+time_bg = "#1d2230"
+time_fg = "#a0a9cb"
+
+[palettes.gruvbox]
+os_background = "#d79921"  # dark0
+os_foreground = "#282828"  # light1
+dir_bg = "#689d6a"         # blue
+dir_fg = "#3c3836"         # light0
+git_bg = "#3c3836"         # dark1
+lang_bg = "#79740e"        # yellow
+lang_fg = "#3c3836"        # dark background
+time_bg = "#d65d0e"        # dark1
+time_fg = "#3c3836"        # faded blue
+
+
+[directory]
+style = "fg:dir_fg bg:dir_bg"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"Development" = " "
+"dotfiles" = " "
+
+[git_branch]
+symbol = ""
+style = "bg:git_bg"
+format = '[[ $symbol $branch ](fg:dir_bg bg:git_bg)]($style)'
+
+[git_status]
+style = "bg:git_bg"
+format = '[[($all_status$ahead_behind )](fg:dir_bg bg:git_bg)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:lang_bg"
+format = '[[ $symbol ($version) ](fg:lang_fg bg:lang_bg)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:lang_bg"
+format = '[[ $symbol ($version) ](fg:lang_fg bg:lang_bg)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:lang_bg"
+format = '[[ $symbol ($version) ](fg:lang_fg bg:lang_bg)]($style)'
+
+[php]
+symbol = ""
+style = "bg:lang_bg"
+format = '[[ $symbol ($version) ](fg:lang_fg bg:lang_bg)]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:time_bg"
+format = '[[  $time ](fg:time_fg bg:time_bg)]($style)'
+
+[cmd_duration]
+disabled = false
+style = 'bold yellow'
+show_notifications = true

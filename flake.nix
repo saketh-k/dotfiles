@@ -4,7 +4,7 @@
     nixpkgs = {
         url = "github:NixOS/nixpkgs/nixos-unstable";
     };
-    nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    #nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,16 +19,14 @@
   outputs = inputs @ {
     self,
     nixpkgs,
-    nixos-unstable,
+    #nixos-unstable,
     home-manager,
     zen-browser,
-    # ghostty,
     ...
   }: let
     # Specify the system architecture (make sure this matches your platform)
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system ; config.allowUnfree = true;config.allowUnfreePredicate = _: true;};
-    pkgs-unstable = import nixos-unstable {inherit system; config.allowUnfree = true; };
   in {
     defaultPackage.${system} = home-manager.defaultPackage.${system};
     # Define Home Manager configurations
@@ -36,13 +34,14 @@
       saketh = home-manager.lib.homeManagerConfiguration {
         # Define the Home Manager environment
         pkgs = pkgs;
-	extraSpecialArgs = {inherit pkgs-unstable zen-browser; };
+	extraSpecialArgs = {inherit zen-browser; };
         # Home Manager modules
         modules = [
           {
             # Use the Alacritty theme
             home.packages = [
               zen-browser.packages.${system}.default
+              # Be sure to change full-screen-api.ignore-widgets to true
               ];}
           ./home.nix # Path to your actual configuratin file
           ./sway
@@ -54,6 +53,7 @@
           ./latex
           ./desktop_apps
           ./browsers
+          ./design
 
   #         ({ pkgs, ... }: {
   #           nixpkgs.overlays = [

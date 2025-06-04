@@ -84,6 +84,26 @@ config.keys = {
 		mods = "LEADER",
 		action = { PasteFrom = "Clipboard" },
 	},
+	{
+		key = "l",
+		mods = "CTRL",
+		action = { ActivatePaneDirection = "Right" },
+	},
+	{
+		key = "k",
+		mods = "CTRL",
+		action = { ActivatePaneDirection = "Up" },
+	},
+	{
+		key = "j",
+		mods = "CTRL",
+		action = { ActivatePaneDirection = "Down" },
+	},
+	{
+		key = "h",
+		mods = "CTRL",
+		action = { ActivatePaneDirection = "Left" },
+	},
 }
 
 return config
