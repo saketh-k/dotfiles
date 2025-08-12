@@ -10,6 +10,9 @@
     nerd-fonts.fira-mono
     nerd-fonts.caskaydia-cove
     nerd-fonts.caskaydia-mono
+
+    noto-fonts
+
     #dejavu_fonts
     #cascadia-code
   ];

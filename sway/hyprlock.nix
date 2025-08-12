@@ -23,7 +23,7 @@
       auth = {
         fingerprint = {
           enabled = true;
-          ready_message = "Scan yer fingie (or use a password)";
+          ready_message = "Scan fingerprint or input password";
           present_message = "Scanning";
           retry_delay = 240;
         };

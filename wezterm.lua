@@ -57,6 +57,10 @@ config.color_schemes = {
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
 config.font_size = 12.0
+config.font = wezterm.font_with_fallback({
+	"JetBrains Mono",
+	"Noto Sans Telugu",
+})
 config.window_background_opacity = 0.95
 config.window_padding = {
 	left = 0,

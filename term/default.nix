@@ -24,8 +24,28 @@
     };
     initExtra = ''
       ZK_NOTEBOOK_DIR="/home/saketh/zk/"
+      if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+    then
+      shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+      exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+    fi
     '';
    };
+
+  programs.fish = {
+    enable = true;
+    shellAliases = {
+      nvim = "/home/saketh/.config/nvim/result/bin/nvim";
+      vim = "/home/saketh/.config/nvim/result/bin/nvim";
+      n = "/home/saketh/.config/nvim/result/bin/nvim";
+    };
+    shellAbbrs = {
+      hms = "home-manager switch --flake ~/dotfiles";
+    };
+    binds = {
+      "alt-y".command = "\"y\"";
+    };
+  };
 
   home.sessionVariables = {
       EDITOR="nvim";

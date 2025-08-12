@@ -8,12 +8,13 @@
   imports = [
   ./default_apps.nix
     ];
+
   home.file.".local/share/applications/personal-zen.desktop".text = ''
   [Desktop Entry]
   Version=1.0
   Type=Application
   Name=Personal Zen Profile
-  Exec=${zen-browser.packages."x86_64-linux".default}/bin/zen -P Personal
+  Exec=${zen-browser.packages."x86_64-linux".twilight-unwrapped}/bin/zen -P Personal
   Terminal=false
   '';
 home.file.".local/share/applications/school-zen.desktop".text = ''
@@ -21,7 +22,7 @@ home.file.".local/share/applications/school-zen.desktop".text = ''
   Version=1.0
   Type=Application
   Name=School Zen Profile
-  Exec=${zen-browser.packages."x86_64-linux".default}/bin/zen -P School
+  Exec=${zen-browser.packages."x86_64-linux".twilight-unwrapped}/bin/zen -P School
   Terminal=false
   '';
   # home.file.".local/share/applications/wolfram.desktop".text = ''

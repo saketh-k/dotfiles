@@ -1,5 +1,5 @@
 {config,pkgs,...}:
 {
-  xdg.mimeApps.enable = true;
+  xdg.mimeApps.enable = false;
   xdg.mimeApps.defaultApplications = { "application/pdf" = ["sioyek.desktop"];};
 }

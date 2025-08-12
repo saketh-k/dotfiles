@@ -9,8 +9,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix = {
+      url = "github:ryantm/agenix";
+    };
     zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
+      url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -21,6 +24,7 @@
     nixpkgs,
     #nixos-unstable,
     home-manager,
+    agenix,
     zen-browser,
     ...
   }: let
@@ -37,12 +41,17 @@
 	extraSpecialArgs = {inherit zen-browser; };
         # Home Manager modules
         modules = [
-          {
+          # {
             # Use the Alacritty theme
-            home.packages = [
-              zen-browser.packages.${system}.default
+            # home.packages = [
+              # (inputs.zen-browser.packages.${system}.twilight-unwrapped.override {
+              #     policies.DisableAppUpdate = false;
+              #     #nativeMessagingHosts = [pkgs.firefoxpwa];
+              #   })
               # Be sure to change full-screen-api.ignore-widgets to true
-              ];}
+              # ];}
+          zen-browser.homeModules.beta
+          agenix.homeManagerModules.default
           ./home.nix # Path to your actual configuratin file
           ./sway
           ./fonts.nix
@@ -54,28 +63,10 @@
           ./desktop_apps
           ./browsers
           ./design
-
-  #         ({ pkgs, ... }: {
-  #           nixpkgs.overlays = [
-  #             (final: prev: {
-  #               wezterm = prev.wezterm.overrideAttrs (old: {
-  #                 patches = (old.patches or [ ]) ++ [
-  #                   (final.fetchpatch {
-  #                     url = "https://patch-diff.githubusercontent.com/raw/wez/wezterm/pull/6508.patch";
-  #                     sha256 = "sha256-eMpg206tUw8m0Sz+3Ox7HQnejPsWp0VHVw169/Rt4do=";
-  #                   })
-  #                 ];
-  #               });
-  #             })
-  #           ];
-  # })
             ];
           };
-
-          #nixvim.homeConfigurations.nixvim
       };
     };
 
-    # Expose Neovim as a package for the system
   }
 

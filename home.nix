@@ -26,8 +26,13 @@
     tmux
     playerctl
     xorg.xmodmap
+    zoom-us
+    zk
+    agenix-cli
   ];
 
+  age = {
+  };
   xdg.configFile."wezterm/wezterm.lua".source = config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/wezterm.lua;
   #TODO: Switch this to be a non-relative path
   programs = {
@@ -47,6 +52,7 @@
       package = pkgs.wezterm;
       enable = true;
       enableBashIntegration = true;
+
     };
 
     kitty = {
@@ -54,9 +60,6 @@
       shellIntegration.enableBashIntegration = true;
     };
     fastfetch.enable = true;
-
-    zoxide.enable = true;
-    zoxide.enableBashIntegration = true;
 
     # Version Control tools
     gh.enable = true;

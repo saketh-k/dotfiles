@@ -1,6 +1,8 @@
 {lib, config, pkgs, ...}:
 {
   home.packages = with pkgs; [
-    orca-slicer
- 
+    #orca-slicer
+    dejavu_fonts
+    openscad
+
   ]; }
