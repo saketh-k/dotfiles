@@ -65,8 +65,10 @@
     gh.enable = true;
     git = {
       enable = true;
-      userName = lib.mkDefault "Saketh Karumuri";
-      userEmail = lib.mkDefault "skarumuri1@gmail.com";
+      settings.user = {
+        name = lib.mkDefault "Saketh Karumuri";
+        email = lib.mkDefault "skarumuri1@gmail.com";
+      };
     };
   };
 

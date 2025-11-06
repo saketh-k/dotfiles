@@ -53,7 +53,7 @@
 
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "yes";
+    enableDefaultConfig = false;
     matchBlocks = {
       "rel" = {
         host = "rel";
@@ -83,6 +83,9 @@
         forwardAgent = true;
         forwardX11 = true;
         forwardX11Trusted = true;
+      };
+      "*" = {
+        addKeysToAgent="yes";
       };
     };
     extraConfig = ''
