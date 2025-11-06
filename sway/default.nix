@@ -41,7 +41,7 @@
       '';
 
     config = {
-      terminal = "wezterm";
+      terminal = "ghostty";
       modifier = "Mod4";
       startup = [
         #{ command = "obsidian --ozone-platform=wayland --enable-features=UseOzonePlatform"; }
