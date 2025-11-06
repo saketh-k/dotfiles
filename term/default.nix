@@ -11,6 +11,11 @@
     colorls
     just
     evil-helix
+    usbutils
+    gparted
+    pciutils
+    dust
+    gitui
   ];
 
   programs.bash = {
