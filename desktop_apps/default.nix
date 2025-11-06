@@ -17,6 +17,7 @@
   Exec=${zen-browser.packages."x86_64-linux".twilight-unwrapped}/bin/zen -P Personal
   Terminal=false
   '';
+
 home.file.".local/share/applications/school-zen.desktop".text = ''
   [Desktop Entry]
   Version=1.0
@@ -24,6 +25,15 @@ home.file.".local/share/applications/school-zen.desktop".text = ''
   Name=School Zen Profile
   Exec=${zen-browser.packages."x86_64-linux".twilight-unwrapped}/bin/zen -P School
   Terminal=false
+  '';
+
+home.file.".local/share/applications/wifi-menu.desktop".text = ''
+    [Desktop Entry]
+    Version=1.0
+    Type=Application
+    Name=Wifi Select
+    Exec=bash ${../tofi/wifi-menu.sh}
+    Terminal=false
   '';
   # home.file.".local/share/applications/wolfram.desktop".text = ''
   # [Desktop Entry]
@@ -33,7 +43,7 @@ home.file.".local/share/applications/school-zen.desktop".text = ''
   # Exec=${pkgs.mathematica}/bin/wolframnb
   # Terminal=false
   # '';
-  #
+
   home.packages = with pkgs; [
 	#    (pkgs.obsidian.overrideAttrs (prevAttrs: rec {
 	#                desktopItem= (prevAttrs.desktopItem.override (d: {exec="${pkgs.obsidian}/bin/obsidian --ozone-platform-hint=auto";}));
