@@ -53,7 +53,7 @@
           zen-browser.homeModules.beta
           agenix.homeManagerModules.default
           ./home.nix # Path to your actual configuratin file
-          ./term/
+          ./term
           ./sway
           ./fonts.nix
           ./extras.nix
