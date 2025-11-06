@@ -1,0 +1,130 @@
+* {
+    border: none;
+    font-size: 14px;
+    font-family: "CaskaydiaMono Nerd Font";
+    min-height: 25px;
+}
+
+window#waybar {
+  background: transparent;
+  color: #a89984;
+  margin: 5px;
+}
+
+#custom-logo {
+  padding: 0 5px;
+  color: #d79921;
+}
+#temperature{
+  padding-left: 15px;
+  color: #d79921;
+  padding-right: 4px;
+}
+#cpu {
+  padding-left: 5px;
+  padding-right:9px;
+  color: #d79921;
+}
+
+.modules-right {
+  padding-left: 5px;
+  border-radius: 15px 0 0 15px;
+  margin-top: 2px;
+  background: #282828; /* Nord 2 */
+}
+
+.modules-center {
+  padding: 0 15px;
+  margin-top: 2px;
+  border-radius: 15px 15px 15px 15px;
+  background: #282828; /* Nord 2 */
+}
+
+.modules-left {
+  border-radius: 0 15px 15px 0;
+  margin-top: 2px;
+  background: #282828; /* Nord 2 */
+}
+
+#battery,
+#custom-clipboard,
+#custom-colorpicker,
+#custom-powerDraw,
+#bluetooth,
+#pulseaudio,
+#network,
+#disk,
+#memory,
+#backlight,
+#custom-weather,
+#idle_inhibitor,
+#jack,
+#tray,
+#window,
+#workspaces,
+#clock {
+  padding: 0 5px;
+  color: #bdae93; /* Nord 5: Light text for contrast */
+}
+
+#clock {
+  padding-right: 10px;
+}
+
+#workspaces button {
+  padding: 0 3px;
+  color: #ee7009;
+  box-shadow: inset 0 0px transparent;
+}
+
+#workspaces button:hover {
+  padding: 0 3px;
+  background: rgba(0,0,0,0);
+  box-shadow: inset 0 0px;
+  text-shadow: transparent;
+  background-color: #3c3836;
+  color: #fe8019;
+}
+
+#pulseaudio {
+  padding-top: 3px;
+  /*color: #fe8019;*/
+}
+
+#temperature.critical,
+#pulseaudio.muted {
+  color: #fbf1c7; /* Nord 11: Red for alerts */
+  padding-top: 0;
+}
+
+#clock {
+  color: #b8bb26; /* Nord 8: green */
+}
+
+#battery.charging {
+    color: #282828; /* Nord 5: Light text */
+    background-color: #b8bb26 ; /* Nord 14: Green */
+}
+
+#battery.warning:not(.charging) {
+    background-color: #ebcb8b; /* Nord 13: Yellow */
+    color: #2e3440; /* Nord 0: Dark text */
+}
+
+#battery.critical:not(.charging) {
+    background-color: #bf616a; /* Nord 11: Red */
+    color: #eceff4; /* Nord 5: Light text */
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: #eceff4; /* Light contrast */
+        color: #2e3440; /* Dark text */
+    }
+}
+

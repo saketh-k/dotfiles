@@ -1,0 +1,55 @@
+
+font=JetBrains Mono Medium 10
+matching-algorithm = fuzzy
+
+# Basic configuration for Tofi
+
+# General behavior
+text-cursor = false
+history = true
+# matching-algorithm = fuzzy
+
+# Style settings (Windows 95 theme)
+font = "Fira Mono 12"
+font-size = 12
+background-color = #c0c0c0
+outline-width = 2
+outline-color = #000000
+border-width = 2
+border-color = #ffffff
+text-color = #000000
+
+# Prompt
+prompt-text = "Run: "
+prompt-color = #000000
+prompt-background = #c0c0c0
+prompt-background-padding = 2
+prompt-background-corner-radius = 0
+
+# Input
+input-color = #000000
+input-background = #ffffff
+input-background-padding = 2
+input-background-corner-radius = 0
+
+# Results
+default-result-color = #000000
+default-result-background = #c0c0c0
+selection-color = #ffffff
+selection-background = #000080
+selection-background-padding = 2
+selection-background-corner-radius = 0
+result-spacing = 3
+
+# Window positioning and layout
+width = 40%
+height = 30%
+corner-radius = 0
+anchor = center
+margin-top = 5%
+exclusive-zone = 0
+
+# Output and scaling
+output = ""
+scale = true
+

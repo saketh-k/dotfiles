@@ -1,55 +1,30 @@
+# ~/.config/tofi/config
 
-font=JetBrains Mono Medium 10
-matching-algorithm = fuzzy
-
-# Basic configuration for Tofi
-
-# General behavior
-text-cursor = false
-history = true
-# matching-algorithm = fuzzy
-
-# Style settings (Windows 95 theme)
-font = "Fira Mono 12"
-font-size = 12
-background-color = #c0c0c0
-outline-width = 2
-outline-color = #000000
+width = 45%
+height = 60%
+padding-top = 5%
+padding-bottom = 5%
+padding-left = 5%
+padding-right = 5%
+outline-width = 0
 border-width = 2
-border-color = #ffffff
-text-color = #000000
+result-spacing = 4
+font = JetBrains Mono 12
+prompt-text = " "
+placeholder-text = "Search..."
+hide-cursor = false
+corner-radius = 15
+selection-background-padding = 5
+selection-background-corner-radius = 5
 
-# Prompt
-prompt-text = "Run: "
-prompt-color = #000000
-prompt-background = #c0c0c0
-prompt-background-padding = 2
-prompt-background-corner-radius = 0
-
-# Input
-input-color = #000000
-input-background = #ffffff
-input-background-padding = 2
-input-background-corner-radius = 0
-
-# Results
-default-result-color = #000000
-default-result-background = #c0c0c0
-selection-color = #ffffff
-selection-background = #000080
-selection-background-padding = 2
-selection-background-corner-radius = 0
-result-spacing = 3
-
-# Window positioning and layout
-width = 40%
-height = 30%
-corner-radius = 0
-anchor = center
-margin-top = 5%
-exclusive-zone = 0
-
-# Output and scaling
-output = ""
-scale = true
-
+background-color = #2E3440EE
+outline-color = #4C566A
+border-color = #81A1C1
+text-color = #81A1C1
+placeholder-color = #4C566A
+selection-color = #81A1C1
+selection-background = #4C566A
+prompt-color = #81A1C1
+#prompt-background = #2E3440
+input-color = #D8DEE9
+num-results = 6

@@ -2,22 +2,9 @@
   config,
   lib,
   pkgs,
-  inputs,
   ...
 }:
 {
-  imports = [
-    ./sway
-    ./fonts.nix
-    ./extras.nix
-    ./desktop_apps
-    ./tmux
-    ./wofi
-    ./tofi
-    ./browsers
-    ./games
-  ];
-
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "saketh";
@@ -35,29 +22,26 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-   # (pkgs.makeDesktopItem {
-   #   name = "obsidian";
-   #   exec = "${pkgs.obsidian}/bin/obsidian --ozone-platform=wayland";
-   #   desktopName = "Obsidian";
-   #   })
-    pkgs.obsidian
-    pkgs.tmux
-    pkgs.playerctl
-    pkgs.xorg.xmodmap
+    neovim
+    tmux
+    playerctl
+    xorg.xmodmap
+    zoom-us
+    zk
+    agenix-cli
   ];
 
+  age = {
+  };
   xdg.configFile."wezterm/wezterm.lua".source = config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/wezterm.lua;
   #TODO: Switch this to be a non-relative path
   programs = {
-
-    # Terminal tools
     alacritty = {
       enable = lib.mkDefault true;
       settings = {
         selection.save_to_clipboard = true;
         shell.program = "tmux";
         font.size = 12;
-        # import = [ pkgs.alacritty-theme.tokyo_night ];
         font.normal = {
           family = "Fira Code";
         };
@@ -65,33 +49,26 @@
     };
 
     wezterm = {
+      package = pkgs.wezterm;
       enable = true;
       enableBashIntegration = true;
+
     };
 
     kitty = {
       enable = true;
-      # themeFile = ...; # "IR Black"
       shellIntegration.enableBashIntegration = true;
     };
     fastfetch.enable = true;
-
-    bash = {
-      enable = true;
-      enableCompletion = true;
-      shellAliases = {
-        wake_desk = "wol 18:C0:4D:88:D7:08"; # Wake up my desktop
-      };
-      # blesh.enable = true;
-    };
 
     # Version Control tools
     gh.enable = true;
     git = {
       enable = true;
-      userName = lib.mkDefault "Saketh Karumuri";
-      userEmail = lib.mkDefault "skarumuri1@gmail.com";
-
+      settings.user = {
+        name = lib.mkDefault "Saketh Karumuri";
+        email = lib.mkDefault "skarumuri1@gmail.com";
+      };
     };
   };
 

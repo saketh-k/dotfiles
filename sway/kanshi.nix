@@ -6,14 +6,14 @@
   services.kanshi = {
     enable =true;
     #enable sway target for kanshi, this might be wrong
-    # systemdTarget = "sway-session.target";
-    systemdTarget = "";
+    systemdTarget = "sway-session.target";
+    #systemdTarget = "";
 
     settings = [
       { profile = {
           name = "undocked";
           outputs = [
-            { criteria = "eDP-1"; status = "enable"; }
+            { criteria = "eDP-1"; status = "enable";}
           ];
         };
       }
@@ -39,12 +39,17 @@
               criteria = "eDP-1";
               status = "disable";
             }
-            { 
-              criteria = "Samsung Electric Company U32R59x HNMN703160";
-              status = "enable";
-              mode = "3840x2160"; # (67.5 / 40)*1/1.7 = approx 1?
-              scale = 2.05;
-              position =  "1920,0";
+            # { 
+            #   criteria = "Samsung Electric Company U32R59x HNMN703160";
+            #   status = "enable";
+            #   mode = "3840x2160"; # (67.5 / 40)*1/1.7 = approx 1?
+            #   scale = 2.05;
+            #   position =  "1920,0";
+            # }
+            {
+              criteria = "Samsung Electric Company LC34G55T HNTX802621";
+              scale = 1.0;
+              position = "1080,0";
             }
             { 
               criteria = "LG Electronics LG IPS FULLHD 0x000663A4";
@@ -52,9 +57,30 @@
               mode = "1920x1080"; # 40
               scale = 1.5;
               position = "0,0";
+              transform = "90";
             }
           ];
         };
-      } ];
+      }
+      {
+        profile = {
+          name = "irvine_lab";
+          outputs = [
+            {
+              criteria = "eDP-1";
+              status = "disable";
+            }
+            { 
+              criteria = "Samsung Electric Company U32R59x HNMN703160";
+              status = "enable";
+              mode = "3840x2160"; # (67.5 / 40)*1/1.7 = approx 1?
+              scale = 2.05;
+              position =  "1920,0";
+              transform = "normal";
+            }
+      ];
+        };
+      }
+    ];
   };
 }
