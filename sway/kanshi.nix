@@ -32,7 +32,6 @@
         };
       }
       { profile = { 
-      # TODO: Add position information for monitors and see how to get kanshi to move output on eDP-1 to DP-2
           name = "irvine_home";
           outputs = [
             { 
@@ -50,14 +49,6 @@
               criteria = "Samsung Electric Company LC34G55T HNTX802621";
               scale = 1.0;
               position = "1080,0";
-            }
-            { 
-              criteria = "LG Electronics LG IPS FULLHD 0x000663A4";
-              status = "enable";
-              mode = "1920x1080"; # 40
-              scale = 1.5;
-              position = "0,0";
-              transform = "90";
             }
           ];
         };
