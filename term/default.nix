@@ -56,6 +56,7 @@
       EDITOR="nvim";
   };
 
+  xdg.configFile."ghostty/config".source = config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/term/ghostty_config;
   xdg.configFile."wezterm/wezterm.lua".source = config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/term/wezterm.lua;
 
   programs.alacritty = {
