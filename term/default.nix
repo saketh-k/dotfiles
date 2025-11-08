@@ -1,4 +1,4 @@
-{ config, pkgs,... }:
+{ config, pkgs,lib,... }:
 
 # Import some common debugging packages often included with busy box separately
 # in order to get help commands etc.
@@ -55,6 +55,33 @@
   home.sessionVariables = {
       EDITOR="nvim";
   };
+
+  xdg.configFile."wezterm/wezterm.lua".source = config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/term/wezterm.lua;
+
+  programs.alacritty = {
+      enable = lib.mkDefault true;
+      settings = {
+        selection.save_to_clipboard = true;
+        shell.program = "tmux";
+        font.size = 12;
+        font.normal = {
+          family = "Fira Code";
+        };
+      };
+    };
+
+  programs.wezterm = {
+    package = pkgs.wezterm;
+    enable = true;
+    enableBashIntegration = true;
+
+  };
+
+  programs.kitty = {
+    enable = true;
+    shellIntegration.enableBashIntegration = true;
+  };
+  programs.fastfetch.enable = true;
 
   programs.ssh = {
     enable = true;

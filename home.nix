@@ -33,34 +33,8 @@
 
   age = {
   };
-  xdg.configFile."wezterm/wezterm.lua".source = config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/wezterm.lua;
   #TODO: Switch this to be a non-relative path
   programs = {
-    alacritty = {
-      enable = lib.mkDefault true;
-      settings = {
-        selection.save_to_clipboard = true;
-        shell.program = "tmux";
-        font.size = 12;
-        font.normal = {
-          family = "Fira Code";
-        };
-      };
-    };
-
-    wezterm = {
-      package = pkgs.wezterm;
-      enable = true;
-      enableBashIntegration = true;
-
-    };
-
-    kitty = {
-      enable = true;
-      shellIntegration.enableBashIntegration = true;
-    };
-    fastfetch.enable = true;
-
     # Version Control tools
     gh.enable = true;
     git = {
