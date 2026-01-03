@@ -84,11 +84,10 @@
         forwardX11 = true;
         forwardX11Trusted = true;
       };
+      "*" = {
+        identityAgent = "~/.1password/agent.sock";
+      };
     };
-    extraConfig = ''
-    Host *
-        IdentityAgent ~/.1password/agent.sock
-      '';
     };
 
   programs.yazi = {
