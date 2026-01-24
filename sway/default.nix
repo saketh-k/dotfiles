@@ -41,7 +41,7 @@
       '';
 
     config = {
-      terminal = "wezterm";
+      terminal = "ghostty";
       modifier = "Mod4";
       startup = [
         #{ command = "obsidian --ozone-platform=wayland --enable-features=UseOzonePlatform"; }
@@ -153,6 +153,8 @@
   home.packages = [
     pkgs.waybar
     pkgs.kanshi
+    pkgs.swaybg
+    pkgs.xwayland-satellite
   ];
   programs.waybar = {
     enable = true;
