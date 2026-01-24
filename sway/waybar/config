@@ -53,6 +53,13 @@
       "format": "{:%H:%M:%S}",
       "interval":1,
       "tooltip-format": "\n<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+			"calendar": {
+									"mode" : "year",
+			},
+			"actions": {
+				"on-click-right": "mode"
+			},
+			
       "calendar-weeks-pos": "right",
       "today-format": "<span color='#7645AD'><b><u>{}</u></b></span>",
       "format-calendar": "<span color='#aeaeae'><b>{}</b></span>",
