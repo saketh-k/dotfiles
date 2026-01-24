@@ -2,6 +2,7 @@
 
 width = 45%
 height = 60%
+anchor = right
 padding-top = 5%
 padding-bottom = 5%
 padding-left = 5%
@@ -17,14 +18,14 @@ corner-radius = 15
 selection-background-padding = 5
 selection-background-corner-radius = 5
 
-background-color = #2E3440EE
-outline-color = #4C566A
-border-color = #81A1C1
-text-color = #81A1C1
-placeholder-color = #4C566A
-selection-color = #81A1C1
-selection-background = #4C566A
-prompt-color = #81A1C1
+# background-color = #2E3440EE
+# outline-color = #4C566A
+# border-color = #81A1C1
+# text-color = #81A1C1
+# placeholder-color = #4C566A
+# selection-color = #81A1C1
+# selection-background = #4C566A
+# prompt-color = #81A1C1
 #prompt-background = #2E3440
 input-color = #D8DEE9
 num-results = 6
