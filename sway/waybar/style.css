@@ -6,44 +6,44 @@
 }
 
 window#waybar {
-  background: transparent;
-  color: #a89984;
-  margin: 5px;
+    background: transparent;
+    color: @base05;  /* Normal text color */
+    margin: 5px;
 }
 
 #custom-logo {
-  padding: 0 5px;
-  color: #d79921;
+    padding: 0 5px;
+    color: @base0A;  /* Yellow/orange accent */
 }
 #temperature{
-  padding-left: 15px;
-  color: #d79921;
-  padding-right: 4px;
+    padding-left: 15px;
+    color: @base0A;  /* Yellow/orange accent */
+    padding-right: 4px;
 }
 #cpu {
-  padding-left: 5px;
-  padding-right:9px;
-  color: #d79921;
+    padding-left: 5px;
+    padding-right:9px;
+    color: @base0A;  /* Yellow/orange accent */
 }
 
 .modules-right {
-  padding-left: 5px;
-  border-radius: 15px 0 0 15px;
-  margin-top: 2px;
-  background: #282828; /* Nord 2 */
+    padding-left: 5px;
+    border-radius: 15px 0 0 15px;
+    margin-top: 2px;
+    background: @base00;  /* Darkest background */
 }
 
 .modules-center {
-  padding: 0 15px;
-  margin-top: 2px;
-  border-radius: 15px 15px 15px 15px;
-  background: #282828; /* Nord 2 */
+    padding: 0 15px;
+    margin-top: 2px;
+    border-radius: 15px 15px 15px 15px;
+    background: @base00;  /* Darkest background */
 }
 
 .modules-left {
-  border-radius: 0 15px 15px 0;
-  margin-top: 2px;
-  background: #282828; /* Nord 2 */
+    border-radius: 0 15px 15px 0;
+    margin-top: 2px;
+    background: @base00;  /* Darkest background */
 }
 
 #battery,
@@ -63,57 +63,57 @@ window#waybar {
 #window,
 #workspaces,
 #clock {
-  padding: 0 5px;
-  color: #bdae93; /* Nord 5: Light text for contrast */
+    padding: 0 5px;
+    color: @base05;  /* Normal text color */
 }
 
 #clock {
-  padding-right: 10px;
+    padding-right: 10px;
 }
 
 #workspaces button {
-  padding: 0 3px;
-  color: #ee7009;
-  box-shadow: inset 0 0px transparent;
+    padding: 0 3px;
+    color: @base09;  /* Orange/brown */
+    box-shadow: inset 0 0px transparent;
 }
 
 #workspaces button:hover {
-  padding: 0 3px;
-  background: rgba(0,0,0,0);
-  box-shadow: inset 0 0px;
-  text-shadow: transparent;
-  background-color: #3c3836;
-  color: #fe8019;
+    padding: 0 3px;
+    background: rgba(0,0,0,0);
+    box-shadow: inset 0 0px;
+    text-shadow: transparent;
+    background-color: @base01;  /* Slightly lighter background */
+    color: @base0A;  /* Yellow/orange accent */
 }
 
 #pulseaudio {
-  padding-top: 3px;
-  /*color: #fe8019;*/
+    padding-top: 3px;
+    /*color: @base0A;*/  /* Uncomment for consistent accent color */
 }
 
 #temperature.critical,
 #pulseaudio.muted {
-  color: #fbf1c7; /* Nord 11: Red for alerts */
-  padding-top: 0;
+    color: @base08;  /* Red for alerts/critical */
+    padding-top: 0;
 }
 
 #clock {
-  color: #b8bb26; /* Nord 8: green */
+    color: @base0B;  /* Green */
 }
 
 #battery.charging {
-    color: #282828; /* Nord 5: Light text */
-    background-color: #b8bb26 ; /* Nord 14: Green */
+    color: @base00;  /* Dark text for contrast */
+    background-color: @base0B;  /* Green background for charging */
 }
 
 #battery.warning:not(.charging) {
-    background-color: #ebcb8b; /* Nord 13: Yellow */
-    color: #2e3440; /* Nord 0: Dark text */
+    background-color: @base0E;  /* Purple/Magenta for warning */
+    color: @base07;  /* Light text */
 }
 
 #battery.critical:not(.charging) {
-    background-color: #bf616a; /* Nord 11: Red */
-    color: #eceff4; /* Nord 5: Light text */
+    background-color: @base08;  /* Red for critical */
+    color: @base07;  /* Light text */
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -123,8 +123,7 @@ window#waybar {
 
 @keyframes blink {
     to {
-        background-color: #eceff4; /* Light contrast */
-        color: #2e3440; /* Dark text */
+        background-color: @base07;  /* Light background */
+        color: @base00;  /* Dark text */
     }
 }
-

@@ -9,6 +9,7 @@
     ./keybindings.nix
     ./kanshi.nix
     ./hyprlock.nix
+    ./waybar.nix
   ];
   xdg.configFile."sway/backgrounds/cloud.png".source = ./backgrounds/cloud.png;
   xdg.configFile."sway/backgrounds/forest.png".source = ./backgrounds/forest.png;
@@ -156,9 +157,6 @@
     pkgs.swaybg
     pkgs.xwayland-satellite
   ];
-  programs.waybar = {
-    enable = true;
-  };
   services.mako = {
     enable = true;
     settings = {
@@ -172,8 +170,11 @@
     icons = true;
     max-icon-size = 64;
     default-timeout = 5000;
-    background-color = "#2e344044"; };
+    # background-color = "#2e344044"; 
+    };
   };
-  home.file.".config/waybar/style.css".source = config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/sway/waybar/style.css;
+
+  # uncomment for faster iterative style changes
+  # home.file.".config/waybar/style.css".source = config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/sway/waybar/style.css;
   home.file.".config/waybar/config".source = config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/sway/waybar/config;
 }

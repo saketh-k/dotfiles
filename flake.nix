@@ -11,6 +11,11 @@
     };
     agenix = {
       url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
@@ -23,6 +28,7 @@
     self,
     nixpkgs,
     #nixos-unstable,
+    stylix,
     home-manager,
     agenix,
     zen-browser,
@@ -52,12 +58,15 @@
               # ];}
           zen-browser.homeModules.beta
           agenix.homeManagerModules.default
+          stylix.homeModules.stylix
           ./home.nix # Path to your actual configuratin file
+          ./themeing
           ./sway
           ./fonts.nix
           ./extras.nix
           ./term
           ./tofi
+          ./wofi
           ./games
           ./latex
           ./desktop_apps
