@@ -45,6 +45,15 @@
     binds = {
       "alt-y".command = "\"y\"";
     };
+    functions = {
+      n = ''
+        if test "$argv" = "."
+          nvim .
+        else set dir (zoxide query -i $argv); and nvim $dir;
+        end
+      '';
+      #"set dir (zoxide query -i $argv); and nvim $dir";
+    };
   };
 
   home.sessionVariables = {
