@@ -11,6 +11,11 @@
     colorls
     just
     evil-helix
+    usbutils
+    gparted
+    pciutils
+    dust
+    gitui
   ];
 
   programs.bash = {
@@ -37,10 +42,10 @@
     shellAliases = {
       nvim = "/home/saketh/.config/nvim/result/bin/nvim";
       vim = "/home/saketh/.config/nvim/result/bin/nvim";
-      n = "/home/saketh/.config/nvim/result/bin/nvim";
     };
     shellAbbrs = {
       hms = "home-manager switch --flake ~/dotfiles";
+      snrbs = "sudo nix-rebuild switch --flake ~/nixos-config#fw-server";
     };
     binds = {
       "alt-y".command = "\"y\"";
@@ -57,12 +62,11 @@
   };
 
   home.sessionVariables = {
-      EDITOR="nvim";
+      EDITOR="~/.config/nvim/result/bin/nvim";
   };
 
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "yes";
     matchBlocks = {
       "rel" = {
         host = "rel";
@@ -95,8 +99,16 @@
       };
       "*" = {
         identityAgent = "~/.1password/agent.sock";
+        addKeysToAgent = "yes";
       };
     };
+    enableDefaultConfig=false;
+    };
+
+  programs.zellij = {
+    enable = true;
+    enableFishIntegration = true;
+    attachExistingSession = true;
     };
 
   programs.yazi = {
