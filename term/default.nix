@@ -18,6 +18,12 @@
     gitui
   ];
 
+  programs.autojump = {
+	enable = true;
+	enableBashIntegration = true;
+    enableFishIntegration = true;
+  };
+
   programs.bash = {
     enable = true;
     enableCompletion = true;
@@ -57,13 +63,21 @@
         else set dir (zoxide query -i $argv); and nvim $dir;
         end
       '';
-      #"set dir (zoxide query -i $argv); and nvim $dir";
     };
+    generateCompletions = true;
   };
 
   home.sessionVariables = {
       EDITOR="~/.config/nvim/result/bin/nvim";
   };
+
+  programs.starship = {
+    enable = true;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
+    enableTransience = true;
+  };
+  home.file.".config/starship.toml".source = config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/term/starship.toml;
 
   programs.ssh = {
     enable = true;
@@ -104,6 +118,13 @@
     };
     enableDefaultConfig=false;
     };
+
+  programs.zoxide = {
+	enable = true;
+	enableBashIntegration = true;
+	options = ["--cmd cd"];
+    enableFishIntegration = true;
+  };
 
   programs.zellij = {
     enable = true;

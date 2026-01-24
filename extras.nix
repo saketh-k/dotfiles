@@ -2,32 +2,6 @@
 
 {
   programs.spotify-player.enable = true;
- 
-  programs.autojump = {
-	enable = true;
-	enableBashIntegration = true;
-    enableFishIntegration = true;
-  };
- 
-  programs.zoxide = {
-	enable = true;
-	enableBashIntegration = true;
-	options = ["--cmd cd"];
-    enableFishIntegration = true;
-  };
-	# Pay respects :(
-	#  programs.thefuck = {
-	#    enableFishIntegration = true;
-	# enable = true;
-	# enableBashIntegration = true;
-	#  };
-	#
-  programs.starship = {
-    enable = true;
-    enableBashIntegration = true;
-    enableFishIntegration = true;
-    enableTransience = true;
-  };
 
   services.easyeffects.enable=true;
   xdg.configFile."easyeffects/output/fw13-easy-effects.json" = {
@@ -39,8 +13,6 @@
     } + "/easy-effects/fw13-easy-effects.json";
   };
   services.easyeffects.preset="fw13-easy-effects";
-
-  home.file.".config/starship.toml".source = config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/term/starship.toml;
 
   home.packages = with pkgs; [
     pkgs.chromium
@@ -56,7 +28,7 @@
     vlc
   ];
 
-# set cursor
+  # set cursor
   home.file.".icons/default".source = "${pkgs.posy-cursors}/share/icons/Posy_Cursor";
   home.pointerCursor = {
     package = pkgs.posy-cursors;
@@ -64,8 +36,6 @@
     gtk.enable=true;
     x11.enable=true;
   };
-
-
 
   #TODO: Fix redshift.service on framework laptop
   services.gammastep = {
