@@ -58,6 +58,12 @@
 
 # set cursor
   home.file.".icons/default".source = "${pkgs.posy-cursors}/share/icons/Posy_Cursor";
+  home.pointerCursor = {
+    package = pkgs.posy-cursors;
+    name = "Posy_Cursor_Black";
+    gtk.enable=true;
+    x11.enable=true;
+  };
 
 
 
