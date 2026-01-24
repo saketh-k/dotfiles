@@ -53,8 +53,14 @@
       hms = "home-manager switch --flake ~/dotfiles";
       snrbs = "sudo nix-rebuild switch --flake ~/nixos-config#fw-server";
     };
+    shellInit = ''
+      set ZK_NOTEBOOK_DIR /home/saketh/zk
+    '';
     binds = {
-      "alt-y".command = "\"y\"";
+      "alt-y" = {
+        command = "\"y\"";
+        repaint = true;
+      };
     };
     functions = {
       n = ''
