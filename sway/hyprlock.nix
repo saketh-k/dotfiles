@@ -44,6 +44,14 @@
           font_size = 50;
 
         }
+        {
+          monitor = "";
+          text = "cmd[update:1000] cat /sys/class/power_supply/BAT1/capacity";
+          font_family = "JetBrains Mono Medium";
+          font_size = 120;
+          valign = "top";
+          halign = "left";
+        }
       ];
     };
   };
