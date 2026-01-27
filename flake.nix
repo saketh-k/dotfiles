@@ -20,6 +20,7 @@
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
   };
 
@@ -36,7 +37,25 @@
   }: let
     # Specify the system architecture (make sure this matches your platform)
     system = "x86_64-linux";
-    pkgs = import nixpkgs { inherit system ; config.allowUnfree = true;config.allowUnfreePredicate = _: true;};
+    tofiOverlay = final: prev: {
+        # Fixes niri spacing bug since repo is abandoned :-(
+        tofi = prev.tofi.overrideAttrs (old: {
+        src = prev.fetchFromGitHub {
+          owner = "philj56";
+          repo = "tofi";
+          rev = "refs/pull/189/head";
+          sha256 = "sha256-KiSkb8HOzBnPyzQcHTyUmVixwpls3/o9BbDBkNWu71c=";
+        };
+      });
+      };
+    pkgs = import nixpkgs { 
+        inherit system ;
+        config.allowUnfree = true;
+        config.allowUnfreePredicate = _: true;
+        overlays = [
+          tofiOverlay
+        ];
+      };
   in {
     defaultPackage.${system} = home-manager.defaultPackage.${system};
     # Define Home Manager configurations
@@ -62,12 +81,8 @@
           ./home.nix # Path to your actual configuratin file
           ./themeing
           ./sway
-          ./fonts.nix
           ./extras.nix
           ./term
-          ./tofi
-          ./wofi
-          ./games
           ./latex
           ./desktop_apps
           ./browsers

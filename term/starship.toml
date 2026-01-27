@@ -17,7 +17,18 @@ $time\
 $cmd_duration\
 \n$character"""
 
-palette = 'gruvbox'
+palette = 'base16'
+
+[palettes.base16]
+os_background = "3"
+os_foreground = "0"
+dir_bg = "6"         # blue
+dir_fg = "18"         # light0
+git_bg = "18"         # dark1
+lang_bg = "2"        # yellow
+lang_fg = "18"        # 18 dark background
+time_bg = "16"        # dark1
+time_fg = "18"        # faded blue
 
 [palettes.nord]
 os_background = "#a3aed2"
@@ -41,6 +52,9 @@ lang_fg = "#3c3836"        # dark background
 time_bg = "#d65d0e"        # dark1
 time_fg = "#3c3836"        # faded blue
 
+[character]
+success_symbol = "[](bold green)"
+error_symbol = "[](bold red)"
 
 [directory]
 style = "fg:dir_fg bg:dir_bg"
@@ -95,3 +109,7 @@ format = '[[  $time ](fg:time_fg bg:time_bg)]($style)'
 disabled = false
 style = 'bold yellow'
 show_notifications = true
+
+[custom.separator]
+when = true
+format = "[](fg:time_bg)"

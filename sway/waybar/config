@@ -3,7 +3,7 @@
   "ipc": true,
   "layer": "top", "position": "top",
   "modules-left": ["custom/logo",   "temperature" , "cpu"],
-  "modules-center": [  "sway/workspaces"],
+  "modules-center": [  "niri/window"],
   "modules-right": ["tray", "backlight", "bluetooth", "pulseaudio", "network",  "battery", "clock" ],
   "reload_style_on_change":true,
 
@@ -12,18 +12,11 @@
     "tooltip": false
   },
 
-  "sway/workspaces": {
-	"format": "{value}",
-	"format-icons": {
-		"1": "",
-		"2": "",
-		"3": "",
-		"4": "",
-		"5": "",
-		"6": "",
-		"active": "",
-		"default": "" 
-	},
+"niri/window": {
+				"format": "{}",
+				"rewrite": {
+								"(.*) — Zen Browser": "$1  "
+				},
 },
 
 "idle_inhibitor":{

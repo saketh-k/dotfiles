@@ -5,7 +5,7 @@ let
 
 in {
   config.wayland.windowManager.sway.config.keybindings=lib.mkOptionDefault{
-    
+
     # Volume CTL
     "XF86AudioRaiseVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%";
     "XF86AudioLowerVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%";
@@ -20,7 +20,7 @@ in {
     "XF86AudioNext" = "exec playerctl next";
     "XF86AudioPrev" = "exec playerctl previous";
     "XF86AudioStop" = "exec playerctl stop";
-    
+
     # Screenshot
     "Print" = "exec grim -g \"\$(slurp)\" - | wl-copy";
     # Set waybar to visible

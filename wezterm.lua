@@ -61,7 +61,7 @@ config.font = wezterm.font_with_fallback({
 	"JetBrains Mono",
 	"Noto Sans Telugu",
 })
-config.window_background_opacity = 0.95
+config.window_background_opacity = 0.8
 config.window_padding = {
 	left = 0,
 	right = 0,

@@ -10,12 +10,13 @@
     ./kanshi.nix
     ./hyprlock.nix
     ./waybar.nix
+    ./app-launcher.nix
   ];
   xdg.configFile."sway/backgrounds/cloud.png".source = ./backgrounds/cloud.png;
   xdg.configFile."sway/backgrounds/forest.png".source = ./backgrounds/forest.png;
   xdg.configFile."sway/backgrounds/tree.jpg".source = ./backgrounds/tree.jpg;
   xdg.configFile."sway/backgrounds/beach.jpg".source = ./backgrounds/beach.jpg;
-  
+
   # WAYLAND APP FIX (hopefuly)
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
@@ -39,7 +40,7 @@
       corner_radius 10
       smart_borders on
       for_window [class=".*"] border none
-      '';
+    '';
 
     config = {
       terminal = "ghostty";
@@ -54,7 +55,7 @@
           command = "gsettings set org.gnome.desktop.interface cursor-theme default 24";
         }
         {
-          command = "gsettings set org.gnome.desktop.interface cursor-size \"64\"" ;
+          command = "gsettings set org.gnome.desktop.interface cursor-size \"64\"";
         }
 
       ];
@@ -94,43 +95,43 @@
       };
       # TODO: Move this color theming block to it's own module/ flake
       colors = {
-    focused = {
-        background = "#2e3440";  
-        border = "#81a1c1";     
-        childBorder = "#eceff4";
-        indicator = "#81a1c1"; 
-        text = "#eceff4";     
-    };
-    focusedInactive = {
-        background = "#3b4252"; 
-        border = "#5e81ac";    
-        childBorder = "#d8dee9";
-        indicator = "#5e81ac"; 
-        text = "#d8dee9";     
-    };
-    unfocused = {
-        background = "#3b4252";
-        border = "#5e81ac";   
-        childBorder = "#d8dee9";
-        indicator = "#5e81ac"; 
-        text = "#d8dee9";     
-    };
-    urgent = {
-        background = "#bf616a";
-        border = "#bf616a";   
-        childBorder = "#bf616a";
-        indicator = "#bf616a"; 
-        text = "#ffffff";     
-    };
-    placeholder = {
-        background = "#2e3440";
-        border = "#4c566a";   
-        childBorder = "#eceff4"; 
-        indicator = "#4c566a";  
-        text = "#eceff4";      
-    };
-    background = "#d8dee9";  
-};
+        focused = {
+          background = "#2e3440";
+          border = "#81a1c1";
+          childBorder = "#eceff4";
+          indicator = "#81a1c1";
+          text = "#eceff4";
+        };
+        focusedInactive = {
+          background = "#3b4252";
+          border = "#5e81ac";
+          childBorder = "#d8dee9";
+          indicator = "#5e81ac";
+          text = "#d8dee9";
+        };
+        unfocused = {
+          background = "#3b4252";
+          border = "#5e81ac";
+          childBorder = "#d8dee9";
+          indicator = "#5e81ac";
+          text = "#d8dee9";
+        };
+        urgent = {
+          background = "#bf616a";
+          border = "#bf616a";
+          childBorder = "#bf616a";
+          indicator = "#bf616a";
+          text = "#ffffff";
+        };
+        placeholder = {
+          background = "#2e3440";
+          border = "#4c566a";
+          childBorder = "#eceff4";
+          indicator = "#4c566a";
+          text = "#eceff4";
+        };
+        background = "#d8dee9";
+      };
       seat = {
         "seat0" = {
           xcursor_theme = "default";
@@ -148,7 +149,10 @@
       }
     ];
     events = [
-      {event = "before-sleep";command = "${pkgs.hyprlock}/bin/hyprlock";}
+      {
+        event = "before-sleep";
+        command = "${pkgs.hyprlock}/bin/hyprlock";
+      }
     ];
   };
   home.packages = [
@@ -156,25 +160,33 @@
     pkgs.kanshi
     pkgs.swaybg
     pkgs.xwayland-satellite
+    pkgs.wlogout
   ];
   services.mako = {
     enable = true;
     settings = {
-    sort = "-time";
-    font = "Fira Code";
-    layer = "overlay";
-    width = 300;
-    height = 110;
-    border-size = 0;
-    border-radius = 5;
-    icons = true;
-    max-icon-size = 64;
-    default-timeout = 5000;
-    # background-color = "#2e344044"; 
+      sort = "-time";
+      # font = "Fira Code";
+      layer = "overlay";
+      width = 300;
+      height = 110;
+      border-size = 0;
+      border-radius = 5;
+      icons = true;
+      max-icon-size = 64;
+      default-timeout = 5000;
+      # background-color = "#2e344044";
     };
   };
 
+  #niri config
+  home.file.".config/niri/config.kdl".source =
+    config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/sway/config.kdl;
+  home.file.".config/niri/colors.kdl".source =
+    config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/sway/colors.kdl;
+
   # uncomment for faster iterative style changes
   # home.file.".config/waybar/style.css".source = config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/sway/waybar/style.css;
-  home.file.".config/waybar/config".source = config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/sway/waybar/config;
+  home.file.".config/waybar/config".source =
+    config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/sway/waybar/config;
 }

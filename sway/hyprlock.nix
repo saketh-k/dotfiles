@@ -16,8 +16,8 @@
         {
           monitor = "";
           path = "screenshot";
-          blur_passes =3;
-          blur_size=10;
+          blur_passes = 3;
+          blur_size = 10;
         }
       ];
       auth = {
@@ -30,24 +30,20 @@
       };
       label = [
         {
-        monitor = "";
-        text = "$TIME";
-        font_size = 90;
-        font_family = "JetBrains Mono Medium";
-        halign = "right";
-        valign = "top";
+          monitor = "";
+          text = "$TIME";
+          font_size = 90;
+          halign = "right";
+          valign = "top";
         }
         {
           monitor = "";
           text = "$FPRINTPROMPT";
-          font_family = "JetBrains Mono Medium";
           font_size = 50;
-
         }
         {
           monitor = "";
           text = "cmd[update:1000] cat /sys/class/power_supply/BAT1/capacity";
-          font_family = "JetBrains Mono Medium";
           font_size = 120;
           valign = "top";
           halign = "left";

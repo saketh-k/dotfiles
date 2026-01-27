@@ -1,8 +1,11 @@
-{ config, pkgs,... }:
+{ config, pkgs, ... }:
 
 # Import some common debugging packages often included with busy box separately
 # in order to get help commands etc.
 {
+
+  imports = [ ./tmux.nix ];
+
   home.packages = with pkgs; [
     blesh
     unzip
@@ -19,8 +22,8 @@
   ];
 
   programs.autojump = {
-	enable = true;
-	enableBashIntegration = true;
+    enable = true;
+    enableBashIntegration = true;
     enableFishIntegration = true;
   };
 
@@ -34,14 +37,14 @@
       vim = "/home/saketh/.config/nvim/result/bin/nvim";
     };
     initExtra = ''
-      ZK_NOTEBOOK_DIR="/home/saketh/zk/"
-      if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
-    then
-      shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-      exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
-    fi
+        ZK_NOTEBOOK_DIR="/home/saketh/zk/"
+        if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+      then
+        shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+        exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+      fi
     '';
-   };
+  };
 
   programs.fish = {
     enable = true;
@@ -69,12 +72,18 @@
         else set dir (zoxide query -i $argv); and nvim $dir;
         end
       '';
+      starship_transient_prompt_func = ''
+        set -l last_exit $status
+        starship module time
+        starship module custom.separator
+      '';
+      #starship module character --status=$last_exit
     };
     generateCompletions = true;
   };
 
   home.sessionVariables = {
-      EDITOR="~/.config/nvim/result/bin/nvim";
+    EDITOR = "~/.config/nvim/result/bin/nvim";
   };
 
   programs.starship = {
@@ -83,7 +92,8 @@
     enableFishIntegration = true;
     enableTransience = true;
   };
-  home.file.".config/starship.toml".source = config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/term/starship.toml;
+  home.file.".config/starship.toml".source =
+    config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/term/starship.toml;
 
   programs.ssh = {
     enable = true;
@@ -122,13 +132,13 @@
         addKeysToAgent = "yes";
       };
     };
-    enableDefaultConfig=false;
-    };
+    enableDefaultConfig = false;
+  };
 
   programs.zoxide = {
-	enable = true;
-	enableBashIntegration = true;
-	options = ["--cmd cd"];
+    enable = true;
+    enableBashIntegration = true;
+    options = [ "--cmd cd" ];
     enableFishIntegration = true;
   };
 
@@ -136,7 +146,7 @@
     enable = true;
     enableFishIntegration = true;
     attachExistingSession = true;
-    };
+  };
 
   programs.yazi = {
     enable = true;
@@ -149,4 +159,21 @@
       };
     };
   };
+
+  # Weird hack for nvim
+  xdg.configFile = {
+    "nvim/parser" = {
+      source =
+        let
+          parsers = pkgs.symlinkJoin {
+            name = "treesitter-parsers";
+            paths = pkgs.vimPlugins.nvim-treesitter.withAllGrammars.dependencies;
+          };
+        in
+        "${parsers}/parser";
+    };
+  };
+
+  home.file.".config/foot/foot.ini".source =
+    config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/term/foot.ini;
 }
