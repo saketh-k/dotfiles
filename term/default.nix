@@ -19,6 +19,7 @@
     pciutils
     dust
     gitui
+    lazygit
   ];
 
   programs.autojump = {
