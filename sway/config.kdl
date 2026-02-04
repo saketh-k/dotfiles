@@ -111,7 +111,6 @@ environment {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 
-//TODO: Use niri-nix to move to next release?
 include "./colors.kdl"
 
 layout {
@@ -202,7 +201,7 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "mako"
 spawn-at-startup "waybar"
-spawn-at-startup "swaybg" "--color" "3c3836"
+spawn-at-startup "swaybg" "-i" "/home/saketh/dotfiles/sway/backgrounds/tree.jpg"
 
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
@@ -265,11 +264,6 @@ window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     match app-id=r#"^zen"# title="^Picture-in-Picture$"
     open-floating true
-}
-
-window-rule {
-    match app-id=r#"$com.mitchellh.ghostty$"#
-    opacity 0.7
 }
 
 // Example: block out two password managers from screen capture.
@@ -381,15 +375,15 @@ binds {
     Mod+Page_Up        { focus-workspace-up; }
     Mod+U              { focus-workspace-down; }
     Mod+I              { focus-workspace-up; }
-    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
-    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
-    Mod+Ctrl+U         { move-column-to-workspace-down; }
-    Mod+Ctrl+I         { move-column-to-workspace-up; }
+    Mod+Shift+Page_Down { move-column-to-workspace-down; }
+    Mod+Shift+Page_Up   { move-column-to-workspace-up; }
+    Mod+Shift+U         { move-column-to-workspace-down; }
+    Mod+Shift+I         { move-column-to-workspace-up; }
 
-    Mod+Shift+Page_Down { move-workspace-down; }
-    Mod+Shift+Page_Up   { move-workspace-up; }
-    Mod+Shift+U         { move-workspace-down; }
-    Mod+Shift+I         { move-workspace-up; }
+    Mod+Ctrl+Page_Down { move-workspace-down; }
+    Mod+Ctrl+Page_Up   { move-workspace-up; }
+    Mod+Ctrl+U         { move-workspace-down; }
+    Mod+Ctrl+I         { move-workspace-up; }
 
     // You can bind mouse wheel scroll ticks using the following syntax.
     // These binds will change direction based on the natural-scroll setting.
@@ -422,33 +416,6 @@ binds {
     // touchpads by default.
     // Mod+TouchpadScrollDown { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
     // Mod+TouchpadScrollUp   { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
-
-    // You can refer to workspaces by index. However, keep in mind that
-    // niri is a dynamic workspace system, so these commands are kind of
-    // "best effort". Trying to refer to a workspace index bigger than
-    // the current workspace count will instead refer to the bottommost
-    // (empty) workspace.
-    //
-    // For example, with 2 workspaces + 1 empty, indices 3, 4, 5 and so on
-    // will all refer to the 3rd workspace.
-    // Mod+1 { focus-workspace 1; }
-    // Mod+2 { focus-workspace 2; }
-    // Mod+3 { focus-workspace 3; }
-    // Mod+4 { focus-workspace 4; }
-    // Mod+5 { focus-workspace 5; }
-    // Mod+6 { focus-workspace 6; }
-    // Mod+7 { focus-workspace 7; }
-    // Mod+8 { focus-workspace 8; }
-    // Mod+9 { focus-workspace 9; }
-    // Mod+Ctrl+1 { move-column-to-workspace 1; }
-    // Mod+Ctrl+2 { move-column-to-workspace 2; }
-    // Mod+Ctrl+3 { move-column-to-workspace 3; }
-    // Mod+Ctrl+4 { move-column-to-workspace 4; }
-    // Mod+Ctrl+5 { move-column-to-workspace 5; }
-    // Mod+Ctrl+6 { move-column-to-workspace 6; }
-    // Mod+Ctrl+7 { move-column-to-workspace 7; }
-    // Mod+Ctrl+8 { move-column-to-workspace 8; }
-    // Mod+Ctrl+9 { move-column-to-workspace 9; }
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+1 { move-window-to-workspace 1; }
