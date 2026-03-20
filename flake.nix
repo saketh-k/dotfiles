@@ -2,11 +2,20 @@
   # Define the inputs (dependencies) for your flake
   inputs = {
     nixpkgs = {
-        url = "github:NixOS/nixpkgs/nixos-unstable";
+      url = "github:NixOS/nixpkgs/nixos-unstable";
     };
+    copyparty = {
+      url = "github:9001/copyparty";
+    };
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     #nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixmate = {
+      url = "github:daskladas/nixmate";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     agenix = {
@@ -25,72 +34,125 @@
   };
 
   # Define the outputs of the flake
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    #nixos-unstable,
-    stylix,
-    home-manager,
-    agenix,
-    zen-browser,
-    ...
-  }: let
-    # Specify the system architecture (make sure this matches your platform)
-    system = "x86_64-linux";
-    tofiOverlay = final: prev: {
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      copyparty,
+      nixos-hardware,
+      nix-minecraft,
+      stylix,
+      home-manager,
+      nixmate,
+      agenix,
+      zen-browser,
+      ...
+    }:
+    let
+      # Specify the system architecture (make sure this matches your platform)
+      system = "x86_64-linux";
+      tofiOverlay = final: prev: {
         # Fixes niri spacing bug since repo is abandoned :-(
         tofi = prev.tofi.overrideAttrs (old: {
-        src = prev.fetchFromGitHub {
-          owner = "philj56";
-          repo = "tofi";
-          rev = "refs/pull/189/head";
-          sha256 = "sha256-KiSkb8HOzBnPyzQcHTyUmVixwpls3/o9BbDBkNWu71c=";
-        };
-      });
+          src = prev.fetchFromGitHub {
+            owner = "philj56";
+            repo = "tofi";
+            rev = "refs/pull/189/head";
+            sha256 = "sha256-KiSkb8HOzBnPyzQcHTyUmVixwpls3/o9BbDBkNWu71c=";
+          };
+        });
       };
-    pkgs = import nixpkgs { 
-        inherit system ;
+      pkgs = import nixpkgs {
+        inherit system;
         config.allowUnfree = true;
         config.allowUnfreePredicate = _: true;
         overlays = [
           tofiOverlay
         ];
       };
-  in {
-    defaultPackage.${system} = home-manager.defaultPackage.${system};
-    # Define Home Manager configurations
-    homeConfigurations = {
-      saketh = home-manager.lib.homeManagerConfiguration {
-        # Define the Home Manager environment
-        pkgs = pkgs;
-	extraSpecialArgs = {inherit zen-browser; };
-        # Home Manager modules
-        modules = [
-          # {
-            # Use the Alacritty theme
-            # home.packages = [
-              # (inputs.zen-browser.packages.${system}.twilight-unwrapped.override {
-              #     policies.DisableAppUpdate = false;
-              #     #nativeMessagingHosts = [pkgs.firefoxpwa];
-              #   })
-              # Be sure to change full-screen-api.ignore-widgets to true
-              # ];}
-          zen-browser.homeModules.beta
-          agenix.homeManagerModules.default
-          stylix.homeModules.stylix
-          ./home.nix # Path to your actual configuratin file
-          ./themeing
-          ./sway
-          ./extras.nix
-          ./term
-          ./latex
-          ./desktop_apps
-          ./browsers
-          ./design
-            ];
+    in
+    {
+      # defaultPackage.${system} = home-manager.defaultPackage.${system};
+      # Define Home Manager configurations
+      nixosConfigurations = {
+        fw-server = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit nixpkgs;
+            inherit system;
           };
+          modules = [
+            ./configuration.nix
+            ./hardware-configuration.nix
+            nixos-hardware.nixosModules.framework-amd-ai-300-series
+            copyparty.nixosModules.default
+            nix-minecraft.nixosModules.minecraft-servers
+            (
+              { pkgs, ... }:
+              {
+                nixpkgs.overlays = [
+                  copyparty.overlays.default
+                  nix-minecraft.overlay
+                ];
+                environment.systemPackages = [
+                  pkgs.copyparty
+                  nixmate.packages.${system}.default
+                ];
+                # services.copyparty.enable = false;
+              }
+            )
+          ];
+        };
+        fw-laptop = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit nixpkgs;
+            inherit system;
+          };
+          modules = [
+            ./configuration.nix
+            <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
+            <nixpkgs/nixos/modules/installer/cd-dvd/channel.nix>
+            ./hardware-server-config.nix
+            nixos-hardware.nixosModules.framework-amd-ai-300-series
+            copyparty.nixosModules.default
+            nix-minecraft.nixosModules.minecraft-servers
+            (
+              { pkgs, ... }:
+              {
+                nixpkgs.overlays = [
+                  copyparty.overlays.default
+                  nix-minecraft.overlay
+                ];
+                environment.systemPackages = [
+                  pkgs.copyparty
+                  nixmate.packages.${system}.default
+                ];
+                # services.copyparty.enable = false;
+              }
+            )
+          ];
+        };
+      };
+      homeConfigurations = {
+        saketh = home-manager.lib.homeManagerConfiguration {
+          # Define the Home Manager environment
+          pkgs = pkgs;
+          extraSpecialArgs = { inherit zen-browser; };
+          # Home Manager modules
+          modules = [
+            zen-browser.homeModules.beta
+            agenix.homeManagerModules.default
+            stylix.homeModules.stylix
+            ./home.nix # Path to your actual configuratin file
+            ./themeing
+            ./sway
+            ./extras.nix
+            ./term
+            ./desktop_apps
+            ./browsers
+            ./design
+          ];
+        };
       };
     };
 
-  }
-
+}

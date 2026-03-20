@@ -35,6 +35,7 @@
     profiles.fixed = {
       search = import ./zen-search-settings.nix { inherit pkgs; };
       settings = {
+        "full-screen-api.ignore-widgets" = true;
         "widget.dmabuf.force-enabled" = true;
         "zen.workspaces.continue-where-left-off" = true;
         "zen.workspaces.natural-scroll" = true;

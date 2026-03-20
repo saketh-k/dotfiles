@@ -85,8 +85,14 @@ output "eDP-1" {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    position x=1280 y=0
+    position x=0 y=0
 }
+
+output "Samsung Electric Company LC34G55T HNTX802621" {
+    scale 1
+    position x=0 y=-1440
+}
+
 
 cursor{
     xcursor-theme "Posy_Cursor_Black"
@@ -96,7 +102,7 @@ cursor{
 }
 
 // uncomment after 25.08
-/-xwayland-satellite {
+xwayland-satellite {
     path "xwayland-satellite"
 }
 
@@ -263,6 +269,11 @@ window-rule {
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     match app-id=r#"^zen"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"discord"#
     open-floating true
 }
 

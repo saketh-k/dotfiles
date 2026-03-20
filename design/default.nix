@@ -1,4 +1,9 @@
-{lib, config, pkgs, ...}:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 {
   home.packages = with pkgs; [
     orca-slicer
@@ -6,7 +11,9 @@
     openscad
     kicad-small
     ugs
-    inkscape
-
-
-  ]; }
+    # inkscape
+    (pkgs.texlive.combine {
+      inherit (pkgs.texlive) scheme-full;
+    })
+  ];
+}

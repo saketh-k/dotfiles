@@ -29,12 +29,16 @@
     zoom-us
     zk
     agenix-cli
+    gcr
   ];
 
   age = {
   };
-  xdg.configFile."wezterm/wezterm.lua".source = config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/wezterm.lua;
-  #TODO: Switch this to be a non-relative path
+
+  services.gnome-keyring.enable = true;
+
+  xdg.configFile."wezterm/wezterm.lua".source =
+    config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/wezterm.lua;
   programs = {
     alacritty = {
       enable = lib.mkDefault true;
@@ -73,7 +77,7 @@
   };
 
   #nixpkgs.config.allowUnfree = true;
-  #nixpkgs.config.allowUnfreePredicate = pkg: 
+  #nixpkgs.config.allowUnfreePredicate = pkg:
   #  builtins.elem (pkgs.lib.getName pkg) [
   #    "copilot.vim"
   #  ];

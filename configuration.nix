@@ -12,7 +12,6 @@
 {
   imports = [
     # Include the results of the hardware scan.
-    ./hardware-configuration.nix
     ./services
     ./modules
 
@@ -189,7 +188,8 @@
   };
 
   #Enable gnome secrets vault
-  #services.gnome.gnome-keyring.enable = true;
+  security.pam.services.login.fprintAuth = true;
+  services.gnome.gnome-keyring.enable = true;
 
   # fonts
   fonts.packages = with pkgs; [
@@ -393,9 +393,6 @@
   # Install firefox.
   programs.firefox.enable = true;
 
-  #enable backlight
-  programs.light.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreePredicate = _: true;
@@ -411,7 +408,6 @@
     wl-clipboard
     pulseaudio
     libnotify
-    light
     brightnessctl
     xorg.xmodmap
     fprintd
@@ -428,6 +424,7 @@
     fcitx5
     virtiofsd
     quickemu
+    brightnessctl
   ];
 
   programs.steam.enable = true;

@@ -83,6 +83,12 @@
     generateCompletions = true;
   };
 
+  programs.direnv = {
+    enable = true;
+    # enableFishIntegration = true;
+    nix-direnv.enable = true;
+  };
+
   home.sessionVariables = {
     EDITOR = "~/.config/nvim/result/bin/nvim";
   };
