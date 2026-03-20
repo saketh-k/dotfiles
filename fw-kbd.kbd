@@ -1,0 +1,28 @@
+(defcfg
+  input (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd")
+  output (uinput-sink "Kmonad-Builtin-KBD"
+  "sleep 1 && setxkbmap -option compose:ralt")
+  cmp-seq ralt ;;
+  cmp-seq-delay 5 ;;
+  fallthrough true
+  )
+  (defalias
+    esc_ctl (tap-next-release esc lctl)
+  )
+
+  (defsrc
+    grv  1 2 3 4 5 6 7 8 9 0 - = bspc
+    tab  q w e r t y u i o p [ ] \
+    caps a s d f g h j k l ; ' ret
+    lsft z x c v b n m , . / rsft 
+                             pgup  up  pgdn
+    lctl lmet lalt  spc ralt rctl left down
+  )
+  (deflayer qwerty
+    grv  1    2      3      4      5      6 7 8       9      0    -    =    bspc
+    tab  q    w      e      r      t      y u i       o      p    [    ]    \
+    @esc_ctl a s d f g h j k  l ; ' ret
+    lsft      z      x      c      v     b n m , . / rsft 
+                             pgup  up  pgdn
+    lctl lmet lalt  spc bspc rctl left down
+  )
