@@ -55,7 +55,7 @@
     };
     shellAbbrs = {
       hms = "home-manager switch --flake ~/dotfiles";
-      snrbs = "sudo nix-rebuild switch --flake ~/nixos-config#fw-server";
+      snrbs = "sudo nixos-rebuild switch --flake ~/dotfiles#fw-server";
     };
     shellInit = ''
       set ZK_NOTEBOOK_DIR /home/saketh/zk
@@ -78,7 +78,6 @@
         starship module time
         starship module custom.separator
       '';
-      #starship module character --status=$last_exit
     };
     generateCompletions = true;
   };
@@ -152,7 +151,7 @@
   programs.zellij = {
     enable = true;
     enableFishIntegration = true;
-    attachExistingSession = true;
+    attachExistingSession = false;
   };
 
   programs.yazi = {

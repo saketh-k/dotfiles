@@ -10,3 +10,10 @@
 ## Niri/ Waybar Window Rewrites
 
 - mpv
+
+## To install
+
+- some networks stuff
+-
+- sdrpp
+-

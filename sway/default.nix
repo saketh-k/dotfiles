@@ -148,12 +148,12 @@
         command = "${pkgs.hyprlock}/bin/hyprlock";
       }
     ];
-    events = [
-      {
-        event = "before-sleep";
-        command = "${pkgs.hyprlock}/bin/hyprlock";
-      }
-    ];
+    # events = [
+    #   {
+    #     event = "before-sleep";
+    #     command = "${pkgs.hyprlock}/bin/hyprlock";
+    #   }
+    # ];
   };
   home.packages = [
     pkgs.waybar
