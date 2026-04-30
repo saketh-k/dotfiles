@@ -15,7 +15,7 @@ $php\
 $time\
 [ ](fg:time_bg)\
 $cmd_duration\
-\n$character"""
+\n[$shell](fg:time_fg)$character"""
 
 palette = 'base16'
 
@@ -55,6 +55,11 @@ time_fg = "#3c3836"        # faded blue
 [character]
 success_symbol = "[](bold green)"
 error_symbol = "[](bold red)"
+
+[shell]
+disabled = false
+bash_indicator = ""
+fish_indicator = "󰈺"
 
 [directory]
 style = "fg:dir_fg bg:dir_bg"
