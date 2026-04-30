@@ -169,10 +169,26 @@
   services.greetd = {
     enable = true;
     settings = {
-      default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --remember --remember-session --asterisks --time --theme \'border=magenta;text=cyan;prompt=green;action=blue;button=cyan\'";
-        user = "greeter";
-      };
+      default_session =
+        let
+          tuigreet = "${lib.getExe pkgs.greetd.tuigreet}";
+          baseSessionsDir = "${config.services.xserver.displayManager.sessionData.desktops}";
+          xSessions = "${baseSessionsDir}/share/xsessions";
+          waylandSessions = "${baseSessionsDir}/share/wayland-sessions";
+          tuigreetOptions = [
+            "--remember"
+            "--remember-session"
+            "--sessions ${waylandSessions}:${xSessions}"
+            "--time"
+            "--theme 'border=magenta;text=cyan;prompt=green;action=blue;button=cyan'"
+            # Make sure theme is wrapped in single quotes. See https://github.com/apognu/tuigreet/issues/147
+          ];
+          flags = lib.concatStringsSep " " tuigreetOptions;
+        in
+        {
+          command = "${tuigreet} ${flags}";
+          user = "greeter";
+        };
     };
   };
 
