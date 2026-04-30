@@ -25,6 +25,7 @@
       enable = lib.mkDefault true;
       efiSupport = true;
       device = "nodev";
+      useOSProber = true;
       #splashMode= "stretch";
       #splashImage= ./Logo_Windows_xp.png;
       #gfxmodeEfi = "1920x1440";
@@ -58,6 +59,8 @@
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
+  # hack for windows being weird with time
+  time.hardwareClockInLocalTime = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
