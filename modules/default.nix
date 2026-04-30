@@ -1,9 +1,15 @@
-{ config, pkgs, lib, inputs,... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 
 {
   imports = [
     ./minecraft.nix
-    ./spacenav-fix.nix
+    ./nginx.nix
   ];
   services.copyparty = {
     enable = lib.mkDefault false;
@@ -12,13 +18,13 @@
       volumes = {
         "/" = {
           path = "/home/saketh";
-          access =  {
+          access = {
             r = "*";
           };
-      };
-      };
+        };
       };
     };
+  };
 
   services.jellyfin = {
     enable = lib.mkDefault false;
@@ -28,11 +34,14 @@
 
   services.immich = {
     enable = lib.mkDefault false;
-    port = 2283; #make this some how a variable??
+    port = 2283; # make this some how a variable??
     accelerationDevices = null;
 
   };
-  users.users.immich.extraGroups = ["video" "render"];
+  users.users.immich.extraGroups = [
+    "video"
+    "render"
+  ];
 
   services.mullvad-vpn = {
     enable = lib.mkDefault true;
@@ -44,6 +53,6 @@
 
   services.nginx = {
     enable = lib.mkDefault false;
-    
+
   };
 }
