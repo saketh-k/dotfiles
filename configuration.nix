@@ -50,7 +50,7 @@
   # Enable networking
   networking.networkmanager.enable = true;
   networking.networkmanager.plugins = [ pkgs.networkmanager-openconnect ];
-  networking.useDHCP = true;
+  networking.useDHCP = lib.mkDefault true;
   networking.dhcpcd.enable = false;
   networking.resolvconf.dnsExtensionMechanism = false;
   systemd.network.wait-online.enable = false;
