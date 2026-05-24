@@ -181,12 +181,12 @@
 
   #niri config
   home.file.".config/niri/config.kdl".source =
-    config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/sway/config.kdl;
+    config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/modules/home/sway/config.kdl;
   home.file.".config/niri/colors.kdl".source =
-    config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/sway/colors.kdl;
+    config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/modules/home/sway/colors.kdl;
 
   # uncomment for faster iterative style changes
-  # home.file.".config/waybar/style.css".source = config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/sway/waybar/style.css;
+  # home.file.".config/waybar/style.css".source = config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/modules/home/sway/waybar/style.css;
   home.file.".config/waybar/config".source =
-    config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/sway/waybar/config;
+    config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/modules/home/sway/waybar/config;
 }

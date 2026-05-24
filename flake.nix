@@ -31,6 +31,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    antigravity-nix = {
+      url = "github:jacopone/antigravity-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # Define the outputs of the flake
@@ -46,6 +50,7 @@
       nixmate,
       agenix,
       zen-browser,
+      antigravity-nix,
       ...
     }:
     let
@@ -145,6 +150,11 @@
             ./modules/home/desktop_apps
             ./modules/home/browsers
             ./modules/home/design
+            {
+              home.packages = [
+                antigravity-nix.packages.${system}.default
+              ];
+            }
           ];
         };
       };
