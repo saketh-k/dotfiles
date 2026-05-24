@@ -81,8 +81,7 @@
             inherit system;
           };
           modules = [
-            ./configuration.nix
-            ./hardware-configuration.nix
+            ./hosts/fw-server/configuration.nix
             nixos-hardware.nixosModules.framework-amd-ai-300-series
             copyparty.nixosModules.default
             nix-minecraft.nixosModules.minecraft-servers
@@ -108,10 +107,7 @@
             inherit system;
           };
           modules = [
-            ./configuration.nix
-            <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
-            <nixpkgs/nixos/modules/installer/cd-dvd/channel.nix>
-            ./hardware-server-config.nix
+            ./hosts/fw-laptop/configuration.nix
             nixos-hardware.nixosModules.framework-amd-ai-300-series
             copyparty.nixosModules.default
             nix-minecraft.nixosModules.minecraft-servers
@@ -142,14 +138,13 @@
             zen-browser.homeModules.beta
             agenix.homeManagerModules.default
             stylix.homeModules.stylix
-            ./home.nix # Path to your actual configuratin file
-            ./themeing
-            ./sway
-            ./extras.nix
-            ./term
-            ./desktop_apps
-            ./browsers
-            ./design
+            ./modules/home/core.nix
+            ./modules/home/themeing
+            ./modules/home/sway
+            ./modules/home/term
+            ./modules/home/desktop_apps
+            ./modules/home/browsers
+            ./modules/home/design
           ];
         };
       };

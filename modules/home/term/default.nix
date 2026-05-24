@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 # Import some common debugging packages often included with busy box separately
 # in order to get help commands etc.
@@ -99,7 +99,7 @@
     enableTransience = true;
   };
   home.file.".config/starship.toml".source =
-    config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/term/starship.toml;
+    config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/modules/home/term/starship.toml;
 
   programs.ssh = {
     enable = true;
@@ -181,5 +181,33 @@
   };
 
   home.file.".config/foot/foot.ini".source =
-    config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/term/foot.ini;
+    config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/modules/home/term/foot.ini;
+
+  xdg.configFile."wezterm/wezterm.lua".source =
+    config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/wezterm.lua;
+
+  programs.alacritty = {
+    enable = lib.mkDefault true;
+    settings = {
+      selection.save_to_clipboard = true;
+      shell.program = "tmux";
+      font.size = 12;
+      font.normal = {
+        family = "Fira Code";
+      };
+    };
+  };
+
+  programs.wezterm = {
+    package = pkgs.wezterm;
+    enable = true;
+    enableBashIntegration = true;
+  };
+
+  programs.kitty = {
+    enable = true;
+    shellIntegration.enableBashIntegration = true;
+  };
+
+  programs.fastfetch.enable = true;
 }

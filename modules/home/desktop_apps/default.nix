@@ -1,11 +1,32 @@
 {
-  lib,
   config,
   pkgs,
+  lib,
   ...
 }:
-
 {
+  home.packages = with pkgs; [
+    vscode
+    moonlight-qt
+    sioyek
+    chromium
+    ghostty
+    zotero
+    bottom
+    mpv
+    fzf
+    dmenu
+    wol
+    vlc
+    sdrpp
+    grayjay
+    zmk-studio
+  ];
+  xdg.mimeApps.enable = false;
+  xdg.mimeApps.defaultApplications = {
+    "application/pdf" = [ "sioyek.desktop" ];
+  };
+
   programs.spotify-player.enable = true;
 
   services.easyeffects.enable = true;
@@ -21,20 +42,7 @@
   };
   services.easyeffects.preset = "fw13-easy-effects";
 
-  home.packages = with pkgs; [
-    pkgs.chromium
-    pkgs.ghostty
-    zotero
-    bottom
-    fastfetch
-    mpv
-    fzf
-    dmenu
-    wol
-    vlc
-  ];
-
-  #TODO: Fix redshift.service on framework laptop
+  # TODO: Fix redshift.service on framework laptop
   services.gammastep = {
     enable = true;
     provider = "manual";

@@ -12,7 +12,7 @@
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages;
 
   boot.initrd.availableKernelModules = [
     "nvme"
@@ -38,27 +38,26 @@
     "udev.log_level=3"
     "systemd.show_status=auto"
   ];
-  #
-  # fileSystems."/" = {
-  #   device = "/dev/disk/by-uuid/b7244e6b-299b-4b70-b3c7-df0c6733bad5";
-  #   fsType = "ext4";
-  # };
-  #
-  # fileSystems."/boot" = {
-  #   device = "/dev/disk/by-uuid/A7FD-4E11";
-  #   fsType = "vfat";
-  #   options = [
-  #     "fmask=0077"
-  #     "dmask=0077"
-  #   ];
-  # };
-  #
-  # swapDevices = [
-  #   {
-  #     device = "/var/lib/swapfile";
-  #     size = 72 * 1024;
-  #   }
-  # ];
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/b7244e6b-299b-4b70-b3c7-df0c6733bad5"; # TODO: Update UUID for laptop
+    fsType = "ext4";
+  };
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/A7FD-4E11"; # TODO: Update UUID for laptop
+    fsType = "vfat";
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
+  };
+
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 72 * 1024;
+    }
+  ];
   #
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
