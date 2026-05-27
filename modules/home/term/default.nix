@@ -1,10 +1,18 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 # Import some common debugging packages often included with busy box separately
 # in order to get help commands etc.
 {
 
-  imports = [ ./tmux.nix ];
+  imports = [
+    ./tmux.nix
+    ./llm.nix
+  ];
 
   home.packages = with pkgs; [
     blesh
