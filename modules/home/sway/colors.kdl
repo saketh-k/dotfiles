@@ -10,8 +10,8 @@ layout{
 
     }
     border {
-        active-color "a7c080" // base0D
-        inactive-color "859289" // base03
-        urgent-color "7fbbb3" // base08
+        active-color "0066ff" // base0D
+        inactive-color "808080" // base03
+        urgent-color "ff0000" // base08
     }
 }

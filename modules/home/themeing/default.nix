@@ -5,7 +5,7 @@
   ...
 }:
 let
-  theme-color = "everforest";
+  theme-color = "isotope";
 in
 {
   home.file.".icons/default".source = "${pkgs.posy-cursors}/share/icons/Posy_Cursor";
