@@ -28,7 +28,13 @@
     dust
     gitui
     lazygit
+    newsboat
   ];
+
+  home.file.".newsboat/config".source =
+    config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/modules/home/term/nb_config;
+  home.file.".newsboat/urls".source =
+    config.lib.file.mkOutOfStoreSymlink /home/saketh/dotfiles/modules/home/term/nb_urls;
 
   programs.autojump = {
     enable = true;

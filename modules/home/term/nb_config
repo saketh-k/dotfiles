@@ -1,0 +1,3 @@
+urls-source "opml"
+opml-url "https://raw.githubusercontent.com/spians/awesome-RSS-feeds/master/countries/with_category/United%20States.opml"
+browser "zen-beta"

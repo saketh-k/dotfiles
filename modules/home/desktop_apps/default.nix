@@ -21,6 +21,8 @@
     sdrpp
     grayjay
     zmk-studio
+    thunderbird-latest
+    kdePackages.kdenlive
   ];
   xdg.mimeApps.enable = false;
   xdg.mimeApps.defaultApplications = {
