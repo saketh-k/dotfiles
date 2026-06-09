@@ -63,7 +63,7 @@
     };
     shellAbbrs = {
       hms = "home-manager switch --flake ~/dotfiles";
-      snrbs = "sudo nixos-rebuild switch --flake ~/dotfiles#fw-server";
+      snrbs = "sudo nixos-rebuild switch --flake ~/dotfiles#fw-laptop";
     };
     shellInit = ''
       set ZK_NOTEBOOK_DIR /home/saketh/zk
